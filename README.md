@@ -112,7 +112,7 @@ To jeszcze nie koniec! Trzeba jeszcze poprawnie skonfigurować serwery Minecraft
 
 **Dla serwerów wpuszczających graczy z wersji starszych niż 1.13**
 1. W spigot.yml ustaw 'bungeecord' na 'true'
-2. Zainstaluj plugin BungeeGuard na serwerach Minecraft
+2. Zainstaluj plugin [BungeeGuard](https://www.spigotmc.org/resources/bungeeguard.79601/) na serwerach Minecraft
 3. W configu BungeeGuarda wpisz hasło serwera proxy (to z configu Velocity) w opcji 'allowed-tokens'
 
 
