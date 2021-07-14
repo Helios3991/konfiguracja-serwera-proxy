@@ -16,6 +16,7 @@ Minusy:
 
 Ocena: 2/10
 
+
 ![image](https://user-images.githubusercontent.com/84963597/125652189-f7f2021f-1361-49ca-b8dc-1da09d404adb.png)
 # WaterFall
 Fork (ulepszenie) BungeeCorda autorstwa twórców Papera naprawiający exploity crashujące i znacznie zwiększający wydajność. Jest najpopularniejszym silnikiem proxy.
@@ -28,6 +29,7 @@ Minusy:
 
 Ocena: 7/10
 
+
 ![image](https://user-images.githubusercontent.com/84963597/125655554-323699ff-a36a-40a3-9bd1-bb8953e431f4.png)
 # FlameCord
 Fork WaterFalla zabezpieczający serwer przed atakami typu nullping. Jeśli twój serwer jest w trybie online, nie potrzebujesz tego silnika.
@@ -38,6 +40,7 @@ Minusy:
 - wspiera piractwo
 
 Ocena: 6/10
+
 
 ![image](https://user-images.githubusercontent.com/84963597/125662115-d2ec1845-0670-4379-91d4-4ab02176a2e4.png)
 # Velocity
@@ -105,7 +108,7 @@ To jeszcze nie koniec! Trzeba jeszcze poprawnie skonfigurować serwery Minecraft
 
 # 5. Przydatne pluginy na serwer proxy
 Jak już wiesz, pluginy pisane na BungeeCorda nie działają na Velocity. Jest jednak sporo alternatyw. Opiszę kilka z nich:
-[LuckPerms](https://luckperms.net/) - Pozwala zarządzać uprawnieniami i rangami.
-[PistonMOTD](https://forums.velocitypowered.com/t/pistonmotd-best-motd-plugin-multi-platform-support/537) - Plugin pozwalający edytować MOTD swojego serwera w sposób bardziej rozbudowany niż opcja w configu Velocity.
-[Anti-VPN](https://forums.velocitypowered.com/t/anti-vpn-get-the-best-save-money-on-overpriced-plugins-and-block-vpn-users/207) - Blokuje połączenia z vpnów.
-[LibertyBans](https://www.spigotmc.org/resources/libertybans.81063/) - Rozbudowany system karania graczy.
+- [LuckPerms](https://luckperms.net/) - Pozwala zarządzać uprawnieniami i rangami.
+- [PistonMOTD](https://forums.velocitypowered.com/t/pistonmotd-best-motd-plugin-multi-platform-support/537) - Plugin pozwalający edytować MOTD swojego serwera w sposób bardziej rozbudowany niż opcja w configu Velocity.
+- [Anti-VPN](https://forums.velocitypowered.com/t/anti-vpn-get-the-best-save-money-on-overpriced-plugins-and-block-vpn-users/207) - Blokuje połączenia z vpnów.
+- [LibertyBans](https://www.spigotmc.org/resources/libertybans.81063/) - Rozbudowany system karania graczy.
