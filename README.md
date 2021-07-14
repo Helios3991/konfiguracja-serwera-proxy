@@ -10,12 +10,14 @@ Pierwszy silnik proxy autorstwa twórcy Spigota. Posiada sporo błędów i luk b
 
 Plusy:
 - ogromna baza pluginów
+
 Minusy:
 - zasobożerny
 - mało bezpieczny
 
 Ocena: 2/10
 
+------------------------------------------------------------------------------------------------------------
 
 ![image](https://user-images.githubusercontent.com/84963597/125652189-f7f2021f-1361-49ca-b8dc-1da09d404adb.png)
 # WaterFall
@@ -24,11 +26,13 @@ Fork (ulepszenie) BungeeCorda autorstwa twórców Papera naprawiający exploity 
 Plusy:
 - w miarę wydajny
 - w miarę bezpieczny
+
 Minusy:
 - możliwość włamania się na konto dowolnej osoby jeśli ten stoi na współdzielonym hostingu bez możliwości konfiguracji firewalla
 
 Ocena: 7/10
 
+------------------------------------------------------------------------------------------------------------
 
 ![image](https://user-images.githubusercontent.com/84963597/125655554-323699ff-a36a-40a3-9bd1-bb8953e431f4.png)
 # FlameCord
@@ -36,11 +40,13 @@ Fork WaterFalla zabezpieczający serwer przed atakami typu nullping. Jeśli twó
 
 Plusy:
 - zabezpiecza crackowane serwery przed atakami, które mogą taki serwer wywalić
+
 Minusy:
 - wspiera piractwo
 
 Ocena: 6/10
 
+------------------------------------------------------------------------------------------------------------
 
 ![image](https://user-images.githubusercontent.com/84963597/125662115-d2ec1845-0670-4379-91d4-4ab02176a2e4.png)
 # Velocity
@@ -50,6 +56,7 @@ Plusy:
 - bardzo wydajny
 - brak potrzeby konfiguracji firewalla dla bezpieczeństwa
 - mniej podatny na exploity crashujące
+
 Minusy:
 - brak kompatybilności z pluginami pisanymi na bungeecorda
 
@@ -57,10 +64,12 @@ Ocena: 9/10
 
 Teraz gdy już znasz kilka silników, można wybierać. W poradniku zostanie przedstawiona konfiguracja Velocity, którego nic przez długi czas nie przebije.
 
+------------------------------------------------------------------------------------------------------------
 
 # 2. Instalacja silnika Velocity
-Przyszedł czas na zainstalowanie silnika proxy. Żeby to zrobić, należy wejść na stronę https://velocitypowered.com/, nacisnąć duży przycisk "Download Now" i wybrać albo najnowszą wersję, albo najnowszego builda (to już zależy od ciebie). Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go w ten sam sposób co silnik serwera mc, lecz z tymi flagami: **-XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15**
+Przyszedł czas na zainstalowanie silnika proxy. Żeby to zrobić, należy wejść na stronę https://velocitypowered.com/, nacisnąć duży przycisk "Download Now" i wybrać albo najnowszą wersję, albo najnowszego builda (to już zależy od ciebie). Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go w ten sam sposób co silnik serwera mc, lecz z tymi flagami: **-XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15**. Dla serwera proxy wystarczy 0,5gb pamięci RAM.
 
+------------------------------------------------------------------------------------------------------------
 
 # 3. Konfiguracja Velocity
 Jeśli uruchomiłeś serwer proxy pewnie zauważyłeś, że wygenerowały się nowe pliki. Ważny dla ciebie jest plik 'velocity.toml'. Opiszę kilka ważniejszych opcji:
@@ -91,6 +100,7 @@ Możesz tutaj ustawić połączenia pomijające serwer lobby.
 
 To są wszystkie ważne opcje, pamiętaj żeby poprawnie je ustawić.
 
+------------------------------------------------------------------------------------------------------------
 
 # 4. Konfiguracja serwerów Minecraft
 To jeszcze nie koniec! Trzeba jeszcze poprawnie skonfigurować serwery Minecraft żeby połączenie było bezpieczne. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Pozostałe ustawienia są zależne od wersji:
@@ -106,9 +116,13 @@ To jeszcze nie koniec! Trzeba jeszcze poprawnie skonfigurować serwery Minecraft
 
 **Teraz możesz uruchomić swoje serwery! Jeśli wszystko dobrze zrobiłeś, będziesz mógł połączyć się przez adres serwera proxy.**
 
+------------------------------------------------------------------------------------------------------------
+
 # 5. Przydatne pluginy na serwer proxy
 Jak już wiesz, pluginy pisane na BungeeCorda nie działają na Velocity. Jest jednak sporo alternatyw. Opiszę kilka z nich:
 - [LuckPerms](https://luckperms.net/) - Pozwala zarządzać uprawnieniami i rangami.
 - [PistonMOTD](https://forums.velocitypowered.com/t/pistonmotd-best-motd-plugin-multi-platform-support/537) - Plugin pozwalający edytować MOTD swojego serwera w sposób bardziej rozbudowany niż opcja w configu Velocity.
 - [Anti-VPN](https://forums.velocitypowered.com/t/anti-vpn-get-the-best-save-money-on-overpriced-plugins-and-block-vpn-users/207) - Blokuje połączenia z vpnów.
 - [LibertyBans](https://www.spigotmc.org/resources/libertybans.81063/) - Rozbudowany system karania graczy.
+
+Więcej pluginów znajdziesz na [forum Velocity](https://forums.velocitypowered.com/c/plugins/5).
