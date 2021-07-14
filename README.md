@@ -28,7 +28,7 @@ Plusy:
 - w miarę bezpieczny
 
 Minusy:
-- możliwość włamania się na konto dowolnej osoby jeśli ten stoi na współdzielonym hostingu bez możliwości konfiguracji firewalla
+- możliwość włamania się na konto dowolnej osoby jeśli serwer stoi na współdzielonym hostingu bez możliwości konfiguracji firewalla
 
 Ocena: 7/10
 
@@ -61,6 +61,8 @@ Minusy:
 - brak kompatybilności z pluginami pisanymi na bungeecorda
 
 Ocena: 9/10
+
+**UWAGA! Unikaj jakichkolwiek płatnych silników proxy, przede wszystkim tych z mc-marketa. Oferują się jako "bardzo wydajne" i "zabezpieczone przed exploitami crashującymi", co jest zwykłym WaterFallem ze zmienioną nazwą.**
 
 Teraz gdy już znasz kilka silników, można wybierać. W poradniku zostanie przedstawiona konfiguracja Velocity, którego nic przez długi czas nie przebije.
 
