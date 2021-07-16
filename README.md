@@ -64,7 +64,7 @@ Ocena: 9/10
 
 **UWAGA! Unikaj jakichkolwiek płatnych silników proxy, przede wszystkim tych z mc-marketa. Oferują się jako "bardzo wydajne" i "zabezpieczone przed exploitami crashującymi", co jest zwykłym WaterFallem ze zmienioną nazwą.**
 
-Teraz gdy już znasz kilka silników, można wybierać. W poradniku zostanie przedstawiona konfiguracja Velocity, którego nic przez długi czas nie przebije.
+**Teraz gdy już znasz kilka silników, można wybierać. W poradniku zostanie przedstawiona konfiguracja Velocity, którego nic przez długi czas nie przebije.**
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -100,7 +100,7 @@ Tutaj możesz dodać swoje serwery Minecraft. Jeśli serwer Minecraft stoi na te
 **[forced-hosts]**
 Możesz tutaj ustawić połączenia pomijające serwer lobby.
 
-To są wszystkie ważne opcje, pamiętaj żeby poprawnie je ustawić.
+**To są wszystkie ważne opcje, pamiętaj żeby poprawnie je ustawić.**
 
 ------------------------------------------------------------------------------------------------------------
 
