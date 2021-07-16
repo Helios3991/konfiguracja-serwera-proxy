@@ -108,12 +108,14 @@ To są wszystkie ważne opcje, pamiętaj żeby poprawnie je ustawić.
 To jeszcze nie koniec! Trzeba jeszcze poprawnie skonfigurować serwery Minecraft żeby połączenie było bezpieczne. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Pozostałe ustawienia są zależne od wersji:
 
 **Dla serwerów wpuszczających wyłącznie graczy z wersji 1.13 i nowszych**
-1. W paper.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz hasło serwera proxy (to z configu Velocity) w opcji 'secret'.
+1. W velocity.toml ustaw 'player-info-forwarding-mode' na "MODERN"
+2. W paper.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz hasło serwera proxy (to z configu Velocity) w opcji 'secret'.
 
 **Dla serwerów wpuszczających graczy z wersji starszych niż 1.13**
-1. W spigot.yml ustaw 'bungeecord' na 'true'
-2. Zainstaluj plugin [BungeeGuard](https://www.spigotmc.org/resources/bungeeguard.79601/) na serwerach Minecraft
-3. W configu BungeeGuarda wpisz hasło serwera proxy (to z configu Velocity) w opcji 'allowed-tokens'
+1. W velocity.toml ustaw 'player-info-forwarding-mode' na "BUNGEEGUARD"
+2. W spigot.yml ustaw 'bungeecord' na 'true'
+3. Zainstaluj plugin [BungeeGuard](https://www.spigotmc.org/resources/bungeeguard.79601/) na serwerach Minecraft
+4. W configu BungeeGuarda wpisz hasło serwera proxy (to z configu Velocity) w opcji 'allowed-tokens'
 
 
 **Teraz możesz uruchomić swoje serwery! Jeśli wszystko dobrze zrobiłeś, będziesz mógł połączyć się przez adres serwera proxy.**
