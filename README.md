@@ -21,7 +21,7 @@ Ocena: 2/10
 
 ![image](https://user-images.githubusercontent.com/84963597/125652189-f7f2021f-1361-49ca-b8dc-1da09d404adb.png)
 # WaterFall
-Fork (ulepszenie) BungeeCorda autorstwa twórców Papera naprawiający exploity crashujące i znacznie zwiększający wydajność. Jest najpopularniejszym silnikiem proxy.
+Fork (ulepszenie) BungeeCorda rozwijany przez twórców Papera naprawiający exploity crashujące i znacznie zwiększający wydajność. Jest najpopularniejszym silnikiem proxy.
 
 Plusy:
 - w miarę wydajny
