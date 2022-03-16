@@ -2,7 +2,7 @@
 Poradnik, dzięki któremu w bezpieczny sposób skonfigurujesz serwer proxy w celu połączenia kilku serwerów Minecraft.
 
 # 1. Wybór silnika proxy
-Jest to bardzo ważne żeby wybrać dobry silnik proxy. Przedstawię tu kilka popularniejszych silników proxy:
+Jest to bardzo ważne żeby wybrać dobry silnik proxy. Przedstawię tu te najpopularniejsze:
 
 ![image](https://user-images.githubusercontent.com/84963597/125640159-15744a41-b13d-4154-8da9-fd06e2952d8e.png)
 # BungeeCord
@@ -36,13 +36,13 @@ Ocena: 7/10
 
 ![image](https://user-images.githubusercontent.com/84963597/125655554-323699ff-a36a-40a3-9bd1-bb8953e431f4.png)
 # FlameCord
-Fork WaterFalla zabezpieczający serwer przed atakami typu nullping. Jeśli twój serwer jest w trybie online, nie potrzebujesz tego silnika.
+Fork WaterFalla skupiający się na zabezpieczeniu serwerów w trybie Offline przed występującymi tam exploitami. Jeśli twój serwer jest w trybie online, nie potrzebujesz tego silnika.
 
 Plusy:
-- zabezpiecza crackowane serwery przed atakami, które mogą taki serwer wywalić
+- zabezpiecza crackowane serwery przed atakami.
 
 Minusy:
-- wspiera piractwo
+- Plus jest tu też minusem, ponieważ jest to wspieranie piractwa.
 
 Ocena: 6/10
 
@@ -50,7 +50,7 @@ Ocena: 6/10
 
 ![image](https://user-images.githubusercontent.com/84963597/125662115-d2ec1845-0670-4379-91d4-4ab02176a2e4.png)
 # Velocity
-Silnik proxy napisany od zera przez oryginalnego twórcę waterfalla, jest od waterfalla dwukrotnie wydajniejszy i bezpieczniejszy.
+Silnik proxy napisany od zera przez twórcę waterfalla, jest od waterfalla dwukrotnie wydajniejszy i bezpieczniejszy.
 
 Plusy:
 - bardzo wydajny
@@ -62,7 +62,7 @@ Minusy:
 
 Ocena: 9/10
 
-**UWAGA! Unikaj jakichkolwiek płatnych silników proxy, przede wszystkim tych z mc-marketa. Oferują się jako "bardzo wydajne" i "zabezpieczone przed exploitami crashującymi", co jest zwykłym WaterFallem ze zmienioną nazwą.**
+**UWAGA! Unikaj jakichkolwiek płatnych silników proxy, przede wszystkim tych z mc-marketa. Oferują się jako "bardzo wydajne" i "zabezpieczone przed exploitami crashującymi", co jest zwykłym WaterFallem ze zmienioną na.**
 
 **Teraz gdy już znasz kilka silników, można wybierać. W poradniku zostanie przedstawiona konfiguracja Velocity, którego nic przez długi czas nie przebije.**
 
@@ -125,8 +125,10 @@ To jeszcze nie koniec! Trzeba jeszcze poprawnie skonfigurować serwery Minecraft
 # 5. Przydatne pluginy na serwer proxy
 Jak już wiesz, pluginy pisane na BungeeCorda nie działają na Velocity. Jest jednak sporo alternatyw. Opiszę kilka z nich:
 - [LuckPerms](https://luckperms.net/) - Pozwala zarządzać uprawnieniami i rangami.
-- [PistonMOTD](https://forums.velocitypowered.com/t/pistonmotd-best-motd-plugin-multi-platform-support/537) - Plugin pozwalający edytować MOTD swojego serwera w sposób bardziej rozbudowany niż opcja w configu Velocity.
-- [Anti-VPN](https://forums.velocitypowered.com/t/anti-vpn-get-the-best-save-money-on-overpriced-plugins-and-block-vpn-users/207) - Blokuje połączenia z vpnów.
+- [MiniMOTD](https://www.spigotmc.org/resources/minimotd-server-list-motd-plugin-with-rgb-gradients.81254/) - Plugin pozwalający edytować MOTD swojego serwera w sposób bardziej rozbudowany niż opcja w configu Velocity.
+- [CommandWhitelist](https://www.spigotmc.org/resources/commandwhitelist-spigot-waterfall-velocity.81326/) - Umożliwia dodanie komend serwera proxy do whitelisty dla wielu rang.
+- [Plan](https://www.spigotmc.org/resources/plan-player-analytics.32536/) - Statystyki serwera.
 - [LibertyBans](https://www.spigotmc.org/resources/libertybans.81063/) - Rozbudowany system karania graczy.
+- [Geyser](https://geysermc.org/) - Pozwala dołączać graczom korzystajacym z Bedrock Edition.
 
-Więcej pluginów znajdziesz na [forum Velocity](https://forums.velocitypowered.com/c/plugins/5).
+Staraj się trzymać na proxy jedynie niezbędne pluginy. Velocity jest bardzo wydajny, lecz pluginy już niekoniecznie.
