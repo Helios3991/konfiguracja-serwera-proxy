@@ -68,12 +68,12 @@ To jeszcze nie koniec! Trzeba poprawnie skonfigurować serwery Minecraft żeby p
 Opisane tu zmiany nie są tak niezbędne jak te wcześniejsze, jednak często są przydatne. Poprawiają ogólne działanie sieci, więc warto z nich skorzystać.
 
 **tcp-fast-open - Velocity**
-Przyspiesza łączenie się gracza z serwerem Proxy jeśli serwer ten stoi na dowolnej dystrybucji Linuxa.
-Zalecana wartość: true
+ Przyspiesza łączenie się gracza z serwerem Proxy jeśli serwer ten stoi na dowolnej dystrybucji Linuxa.
+ Zalecana wartość: true
 
 **network-compression-threshold - Server.properties**
-Kompresja pakietów na serwerach Minecraft jest zbędna, ponieważ zajmuje się tym serwer proxy. Można ją wyłączyć.
-Zalecana wartość: -1
+ Kompresja pakietów na serwerach Minecraft jest zbędna, ponieważ zajmuje się tym serwer proxy. Można ją wyłączyć.
+ Zalecana wartość: -1
 
 
 # 5. Przydatne pluginy na serwer proxy
