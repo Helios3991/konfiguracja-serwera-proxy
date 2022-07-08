@@ -11,7 +11,7 @@ Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy d
 ------------------------------------------------------------------------------------------------------------
 
 # 1. Instalacja i pierwsze uruchomienie silnika Velocity
-Aby zainstalować Velocity, należy wejść na stronę https://velocitypowered.com/, nacisnąć duży przycisk "Download Now" i wybrać albo najnowszą wersję, albo najnowszego builda (to już zależy od ciebie). Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą **java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**. Oczywiście możesz też użyć tą komendę w pliku startowym. Dla serwera proxy wystarczy 0,5gb pamięci RAM, jednak warto przypisać trochę więcej na wypadek większego ataku. Ważne jest też by zostawić wolny ram, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. W przypadku przypisanego 1gb, maszyna musi mieć przynajmniej 4gb.
+Aby zainstalować Velocity, należy wejść na stronę https://velocitypowered.com/, nacisnąć duży przycisk "Download Now" i wybrać albo najnowszą wersję, albo najnowszego builda (to już zależy od ciebie). Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą **java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**. Oczywiście możesz też użyć tą komendę w pliku startowym. Dla serwera proxy wystarczy 0,5gb pamięci RAM, jednak warto przypisać trochę więcej aby wystarczyło też dla pluginów. Ważne jest też by zostawić wolny ram, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. W przypadku przypisanego 1gb, maszyna musi mieć przynajmniej 4gb.
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ Pozwala zmienić napis wyświetlający się w liście serwerów. Są do tego zaz
 Wyświetlana w liście serwerów maksymalna ilość graczy.
 
 **online-mode**
-Nie zaleca się zmieniać tej opcji na publicznym serwerze przede wszystkim ze względów prawnych, lecz także ze względów bezpieczeństwa. Ustaw na false tylko jeśli musisz coś przetestować przy użyciu kilku kont.
+Autoryzacja dołączających graczy, wyłączenie jej może narazić serwer na różne ataki. Możliwość jej wyłączenia jest przydatna gdy trzeba coś przetestować na kilku kontach.
 
 **player-info-forwarding-mode**
 Bardzo ważna opcja, pozwala wybrać tryb przesyłu danych. Jeśli twój serwer wpuszcza graczy tylko z wersji 1.13 lub nowszych, ustaw ją na "MODERN". Jeśli jednak na serwer mogą wchodzić gracze z wersji starszych niż 1.13, wpisz tu "BUNGEEGUARD". Na każdej z tych opcji inaczej konfiguruje się serwery Minecraft żeby przyjmowały połączenia z serwera proxy, zostanie to opisane niżej.
