@@ -1,5 +1,5 @@
-# konfiguracja-serwera-proxy
-Poradnik, dzięki któremu w bezpieczny sposób skonfigurujesz serwer proxy w celu połączenia kilku serwerów Minecraft.
+# Konfiguracja Serwera Proxy
+**Poradnik ten został napisany pod najnowsze wersje silników Paper oraz Velocity i jest aktywnie rozwijany. Jeśli korzystasz ze starszych wersji któregoś z tych silników, konfiguracja może się różnić.**
 
 # 0. Dlaczego Velocity?
 Częstym błędem wielu osób jest korzystanie z przestarzałego, lecz poznanego już software'u. Mogą to być pluginy, silnik serwera Minecraft, a także silnik serwera proxy. Przykładem tego jest BungeeCord, który jest strasznie zasobożerny (w porównaniu z alternatywami) i ciężko w nim o jakiekolwiek bezpieczeństwo. Oczywiście istnieje jeszcze WaterFall, jednak po przejęciu Velocity przez Papera, rozwój najpopularniejszego forka BungeeCorda spadł do minimum.
@@ -48,7 +48,7 @@ To jeszcze nie koniec! Trzeba poprawnie skonfigurować serwery Minecraft żeby p
 
 **Dla serwerów wpuszczających wyłącznie graczy z wersji 1.13 i nowszych**
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "MODERN"
-2. W paper.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz hasło serwera proxy (znajdujące się w pliku forwarding.secret) w opcji 'secret'.
+2. W config/paper-global.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz hasło serwera proxy (znajdujące się w pliku forwarding.secret) w opcji 'secret'.
 
 **Dla serwerów wpuszczających graczy z wersji starszych niż 1.13**
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "BUNGEEGUARD"
