@@ -6,7 +6,7 @@ Częstym błędem wielu osób jest korzystanie z przestarzałego, lecz poznanego
 
 Kolejnym błędem jest korzystanie z tzw. scamforków. Są to forki closed-source BungeeCorda/WaterFalla niskiej jakości, które nie dość, że więcej zmieniają na gorsze niż na lepsze, to dodatkowo łamią licencję BungeeCorda. Oferują się także jako "w pełni bezpieczne", jednak jak wiadomo to właśnie team Papera jest pierwszy do naprawienia każdej nowej luki w bezpieczeństwie.
 
-Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy dla Minecrafta. Jest głównym autorem WaterFalla, którego oddał Paperowi by móc stworzyć właśnie Velocity. Do jego portfolio zalicza się także RedisBungee oraz dwie popularne modyfikacje poprawiające wydajność: Krypton i LazyDFU. Velocity jest dwukrotnie wydajniejszy niż WaterFall, a do tego oferuje lepsze bezpieczeństwo. Jest mniej podatny na możliwe, przyszłe exploity oraz oferuje funkcję Modern Forwarding, dzięki której konfiguracja firewalla nie jest aż tak niezbędna jak w przypadku silników bazujących na BungeeCordzie.
+Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy dla Minecrafta. Jest głównym autorem WaterFalla, którego oddał Paperowi by móc stworzyć właśnie Velocity. Do jego portfolio zalicza się także RedisBungee oraz dwie popularne modyfikacje poprawiające wydajność: Krypton i LazyDFU. Velocity jest dwukrotnie wydajniejszy niż WaterFall, a do tego oferuje lepsze bezpieczeństwo. Jest mniej podatny na potencjalne exploity oraz oferuje funkcję Modern Forwarding, dzięki której konfiguracja firewalla nie jest aż tak niezbędna jak w przypadku silników bazujących na BungeeCordzie.
 
 ------------------------------------------------------------------------------------------------------------
 
