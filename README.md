@@ -2,7 +2,7 @@
 Poradnik, dzięki któremu w bezpieczny sposób skonfigurujesz serwer proxy w celu połączenia kilku serwerów Minecraft.
 
 # 0. Dlaczego Velocity?
-Częstym błędem wielu osób jest korzystanie z przestarzałego, lecz poznanego już software'u. Mogą to być pluginy, silnik serwera Minecraft, a także silnik serwera proxy. Przykładem tego jest BungeeCord, który jest strasznie zasobożerny (w porównaniu z alternatywami) i ciężko w nim o jakiekolwiek bezpieczeństwo. Oczywiście istnieje jeszcze WaterFall, jednak po przejęciu Velocity przez Papera, rozwój najpopularniejszego forka BungeeCorda spadł do poziomów tak niskich jak rozwój starego BungeeCorda.
+Częstym błędem wielu osób jest korzystanie z przestarzałego, lecz poznanego już software'u. Mogą to być pluginy, silnik serwera Minecraft, a także silnik serwera proxy. Przykładem tego jest BungeeCord, który jest strasznie zasobożerny (w porównaniu z alternatywami) i ciężko w nim o jakiekolwiek bezpieczeństwo. Oczywiście istnieje jeszcze WaterFall, jednak po przejęciu Velocity przez Papera, rozwój najpopularniejszego forka BungeeCorda spadł do minimum.
 
 Kolejnym błędem jest korzystanie z tzw. scamforków. Są to forki closed-source BungeeCorda/WaterFalla niskiej jakości, które nie dość, że więcej zmieniają na gorsze niż na lepsze, to dodatkowo łamią licencję BungeeCorda. Oferują się także jako "w pełni bezpieczne", jednak jak wiadomo to właśnie team Papera jest pierwszy do naprawienia każdej nowej luki w bezpieczeństwie.
 
@@ -11,7 +11,7 @@ Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy d
 ------------------------------------------------------------------------------------------------------------
 
 # 1. Instalacja i pierwsze uruchomienie silnika Velocity
-Aby zainstalować Velocity, należy wejść na stronę https://velocitypowered.com/, nacisnąć duży przycisk "Download Now" i wybrać albo najnowszą wersję, albo najnowszego builda (to już zależy od ciebie). Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą **java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**. Oczywiście możesz też użyć tą komendę w pliku startowym. Dla serwera proxy wystarczy 0,5gb pamięci RAM, jednak warto przypisać trochę więcej aby wystarczyło też dla pluginów. Ważne jest też by zostawić wolny ram, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. W przypadku przypisanego 1gb, maszyna musi mieć przynajmniej 4gb.
+Aby zainstalować Velocity, należy wejść na [stronę Papera](https://papermc.io/downloads#Velocity) i pobrać najnowszy build. Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą **java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**. Oczywiście możesz też użyć tą komendę w pliku startowym. Dla serwera proxy wystarczy 0,5gb pamięci RAM, jednak warto przypisać trochę więcej aby wystarczyło też dla pluginów. Ważne jest też by zostawić wolny ram, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna musi mieć przynajmniej 4gb.
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ Wyświetlana w liście serwerów maksymalna ilość graczy.
 Autoryzacja dołączających graczy, wyłączenie jej może narazić serwer na różne ataki. Możliwość wyłączenia autoryzacji jest przydatna gdy trzeba coś przetestować na kilku kontach.
 
 **player-info-forwarding-mode**
-Bardzo ważna opcja, pozwala wybrać tryb przesyłu danych. Jeśli twój serwer wpuszcza graczy tylko z wersji 1.13 lub nowszych, ustaw ją na "MODERN". Jeśli jednak na serwer mogą wchodzić gracze z wersji starszych niż 1.13, wpisz tu "BUNGEEGUARD". Na każdej z tych opcji inaczej konfiguruje się serwery Minecraft żeby przyjmowały połączenia z serwera proxy, zostanie to opisane niżej.
+Bardzo ważna opcja, pozwala wybrać tryb przesyłu danych. Jeśli twój serwer wpuszcza graczy tylko z wersji 1.13 lub nowszych, ustaw ją na "MODERN". Jeśli jednak na serwer mogą wchodzić gracze z wersji starszych niż 1.13, wpisz tu "BUNGEEGUARD". Na każdej z tych opcji inaczej konfiguruje się serwery Minecraft żeby przyjmowały połączenia z serwera proxy, zostało to opisane niżej.
 
 **[servers]**
 Tutaj możesz dodać swoje serwery Minecraft. Jeśli serwer proxy stoi na tej samej maszynie co dany serwer Minecraft, jako adres użyj '127.0.0.1'. Jeśli nie, wpisz tam adres serwera Minecraft. Port możesz użyć jaki chcesz, ważne jest żeby nie był zajęty. Port w configu Velocity musi być taki sam jak port w server.properties wybranego serwera. Istnieje tutaj też opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera lobby).
