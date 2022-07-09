@@ -28,13 +28,10 @@ Pozwala zmienić napis wyświetlający się w liście serwerów. Są do tego zaz
 Wyświetlana w liście serwerów maksymalna ilość graczy.
 
 **online-mode**
-Autoryzacja dołączających graczy, wyłączenie jej może narazić serwer na różne ataki. Możliwość jej wyłączenia jest przydatna gdy trzeba coś przetestować na kilku kontach.
+Autoryzacja dołączających graczy, wyłączenie jej może narazić serwer na różne ataki. Możliwość wyłączenia autoryzacji jest przydatna gdy trzeba coś przetestować na kilku kontach.
 
 **player-info-forwarding-mode**
 Bardzo ważna opcja, pozwala wybrać tryb przesyłu danych. Jeśli twój serwer wpuszcza graczy tylko z wersji 1.13 lub nowszych, ustaw ją na "MODERN". Jeśli jednak na serwer mogą wchodzić gracze z wersji starszych niż 1.13, wpisz tu "BUNGEEGUARD". Na każdej z tych opcji inaczej konfiguruje się serwery Minecraft żeby przyjmowały połączenia z serwera proxy, zostanie to opisane niżej.
-
-**forwarding-secret**
-Jest to "hasło" twojego serwera proxy, pozwala bezpiecznie łączyć się z serwerami Minecraft.
 
 **[servers]**
 Tutaj możesz dodać swoje serwery Minecraft. Jeśli serwer proxy stoi na tej samej maszynie co dany serwer Minecraft, jako adres użyj '127.0.0.1'. Jeśli nie, wpisz tam adres serwera Minecraft. Port możesz użyć jaki chcesz, ważne jest żeby nie był zajęty. Port w configu Velocity musi być taki sam jak port w server.properties wybranego serwera. Istnieje tutaj też opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera lobby).
@@ -47,20 +44,20 @@ Możesz tutaj ustawić połączenia pomijające serwer lobby. Wymagane są odpow
 ------------------------------------------------------------------------------------------------------------
 
 # 3. Konfiguracja serwerów Minecraft
-To jeszcze nie koniec! Trzeba poprawnie skonfigurować serwery Minecraft żeby połączenie było bezpieczne. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port (server-port) taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Jeśli serwer Minecraft stoi na tej samej maszynie co serwer proxy, nalezy także zmienić adres IP (server-ip) na '127.0.0.1'. Pozostałe ustawienia są zależne od wersji:
+To jeszcze nie koniec! Trzeba poprawnie skonfigurować serwery Minecraft żeby połączenie było bezpieczne. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port (server-port) taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Jeśli serwer Minecraft stoi na tej samej maszynie co serwer proxy, należy także zmienić adres IP (server-ip) na '127.0.0.1'. Pozostałe ustawienia są zależne od wersji:
 
 **Dla serwerów wpuszczających wyłącznie graczy z wersji 1.13 i nowszych**
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "MODERN"
-2. W paper.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz hasło serwera proxy (to z configu Velocity) w opcji 'secret'.
+2. W paper.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz hasło serwera proxy (znajdujące się w pliku forwarding.secret) w opcji 'secret'.
 
 **Dla serwerów wpuszczających graczy z wersji starszych niż 1.13**
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "BUNGEEGUARD"
 2. W spigot.yml ustaw 'bungeecord' na 'true'
 3. Zainstaluj plugin [BungeeGuard](https://www.spigotmc.org/resources/bungeeguard.79601/) na serwerach Minecraft
-4. W configu BungeeGuarda wpisz hasło serwera proxy (to z configu Velocity) w opcji 'allowed-tokens'
+4. W configu BungeeGuarda wpisz hasło serwera proxy (znajdujące się w pliku forwarding.secret) w opcji 'allowed-tokens'
 
 
-**Teraz możesz uruchomić swoje serwery! Jeśli wszystko dobrze zrobiłeś, będziesz mógł połączyć się przez adres serwera proxy.**
+**Teraz możesz uruchomić swoje serwery! Jeśli wszystko dobrze zrobiłeś, będziesz mógł połączyć się przez adres i port serwera proxy.**
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -83,6 +80,5 @@ Jak już wiesz, pluginy pisane na BungeeCorda nie działają na Velocity. Jest j
 - [CommandWhitelist](https://www.spigotmc.org/resources/commandwhitelist-spigot-waterfall-velocity.81326/) - Umożliwia dodanie komend serwera proxy do whitelisty dla różnych rang.
 - [Plan](https://www.spigotmc.org/resources/plan-player-analytics.32536/) - Statystyki serwera.
 - [LibertyBans](https://www.spigotmc.org/resources/libertybans.81063/) - Rozbudowany system karania graczy.
-- [Geyser](https://geysermc.org/) - Pozwala dołączać graczom korzystajacym z Bedrock Edition.
 
 Staraj się trzymać na proxy jedynie niezbędne pluginy. Velocity jest bardzo lekki, lecz pluginy już niekoniecznie.
