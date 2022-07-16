@@ -69,7 +69,7 @@ Opisane tu zmiany nie są tak niezbędne jak te wcześniejsze, jednak często s�
 - Zalecana wartość: true
 
 **network-compression-threshold - Server.properties**
-- Kompresja pakietów na serwerach Minecraft jest zbędna, ponieważ zajmuje się tym serwer proxy. Można ją wyłączyć.
+- Gdy serwer Minecraft stoi na tej samej maszynie co serwer proxy to nie musi on kompresować przesyłanych danych, ponieważ wysyła je tylko do serwera proxy, który zajmuje się kompresją. Nie zmieniaj tej opcji jeśli serwery stoją na różnych maszynach.
 - Zalecana wartość: -1
 
 
