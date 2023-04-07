@@ -121,22 +121,22 @@ Ataki DDoS to problem każdego serwera, nieważne jak dużego. Na szczęście mo
 W poradniku użyję [TCPShield](https://tcpshield.com) (WARUNEK: Musisz posiadać własną domenę):
 1. Załóż konto na stronie [TCPShield.com](https://tcpshield.com)
 2. Wejdź w zakładkę 'Backends' w panelu TCPShield:
-    1. Naciśnij przycisk 'Add Set'
-    2. W 'Name' wstaw dowolną nazwę
-    3. W 'Backends' wpisz adres IP oraz port serwera Velocity
-    4. Włącz opcję 'Proxy Protocol'
-    5. Zapisz zmiany
+    - Naciśnij przycisk 'Add Set'
+    - W 'Name' wstaw dowolną nazwę
+    - W 'Backends' wpisz adres IP oraz port serwera Velocity
+    - Włącz opcję 'Proxy Protocol'
+    - Zapisz zmiany
 3. Wejdź w zakładkę 'Domains' w panelu TCPShield oraz w panel swojej domeny:
-    1. Wyczyść ustawienia domeny
-    2. Stwórz rekord CNAME z wartością z panelu TCPShield
-    3. Na dole panelu TCPShield, w 'Domain management', naciśnij przycisk 'Add Domain'
-    4. Wybierz swój Backend Set
-    5. W opcji 'Domain' wpisz swoją domenę
-    6. Naciśnij czerwony napis 'Unverified. Begin verification' pod opcją 'Domain'
-    7. Naciśnij 'TXT Record'
-    8. Stwórz rekord TXT z wygenerowaną wartością
-    9. Naciśnij przycisk 'Verify'
-    10. Naciśnij przycisk 'Add'
+    - Wyczyść ustawienia domeny
+    - Stwórz rekord CNAME z wartością z panelu TCPShield
+    - Na dole panelu TCPShield, w 'Domain management', naciśnij przycisk 'Add Domain'
+    - Wybierz swój Backend Set
+    - W opcji 'Domain' wpisz swoją domenę
+    - Naciśnij czerwony napis 'Unverified. Begin verification' pod opcją 'Domain'
+    - Naciśnij 'TXT Record'
+    - Stwórz rekord TXT z wygenerowaną wartością
+    - Naciśnij przycisk 'Verify'
+    - Naciśnij przycisk 'Add'
 4. Otwórz config Velocity
 5. Zmień opcje:
     - haproxy-protocol = true
