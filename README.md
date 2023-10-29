@@ -13,7 +13,7 @@ Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy d
 # 1. Instalacja i pierwsze uruchomienie silnika Velocity
 Aby zainstalować Velocity, należy wejść na [stronę Papera](https://papermc.io/downloads#Velocity) i pobrać najnowszy build. Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą:  
 **java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**.  
-Oczywiście możesz też użyć tą komendę w swoim pliku startowym. Dla samego serwera proxy wystarczy przypisać 0.5gb pamięci RAM, jednak pluginy też trochę potrzebują, dlatego lepiej przypisać 1gb-2gb. Ważne jest też by zostawić wolny ram dla overheadu, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna musi mieć przynajmniej 4gb.
+Oczywiście możesz też użyć tą komendę w swoim pliku startowym. Dla samego serwera proxy wystarczy przypisać 0.5gb pamięci RAM, jednak pluginy też trochę potrzebują, dlatego lepiej przypisać 1gb-2gb. Ważne jest też by zostawić wolny ram dla overheadu, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna powinna mieć przynajmniej 4gb.
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -22,31 +22,36 @@ Jeśli uruchomiłeś serwer proxy pewnie zauważyłeś, że wygenerowały się n
 
 **bind = "0.0.0.0:25577"**  
 Pozwala zmienić port serwera proxy oraz wybrać jeden z adresów IP w przypadku gdy maszyna posiada ich więcej niż 1. Adres 0.0.0.0 oznacza listę wszystkich dostępnych adresów IP.
+**Zalecane**: "0.0.0.0:25565"
 
 **motd = "<#09add3>A Velocity Server"**  
 Pozwala zmienić tekst wyświetlający się w liście serwerów. Zazwyczaj używane są do tego pluginy, ponieważ oferują większą funkcjonalność.
 
 **show-max-players = 500**  
-Wyświetlana w liście serwerów maksymalna ilość graczy.
+Wyświetlana w liście serwerów maksymalna ilość slotów.
 
 **online-mode = true**  
 Opcja ta sama co w przypadku serwera Minecraft - pozwala przełączyć autoryzację graczy z serwerami Microsoftu. Wyłączenie jej pozwoli dołączać na serwer graczom z piracką wersją gry oraz otworzy wiele luk w bezpieczeństwie, dlatego zalecam zostawić ją włączoną.
 
 **player-info-forwarding-mode = "NONE"**  
 Pozwala wybrać tryb przesyłu UUID oraz adresów IP dołączających graczy między serwerem proxy a serwerem Minecraft. Jeśli twój serwer wpuszcza graczy tylko z wersji 1.13 lub nowszych, ustaw ją na "MODERN". Jeśli jednak na serwer mogą wchodzić gracze z wersji starszych niż 1.13, wpisz tu "BUNGEEGUARD". Na każdej z tych opcji inaczej konfiguruje się serwery Minecraft aby przyjmowały połączenia z serwera proxy, zostało to opisane w punkcie 3.
+**Zalecane**: "MODERN"
 
 **[servers]**  
-Tutaj możesz dodać swoje serwery Minecraft. Jeśli serwer proxy stoi na tej samej maszynie co dany serwer Minecraft, jako adres użyj '127.0.0.1'. Jeśli nie, wpisz tam adres serwera Minecraft. Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w configu Velocity musi być taki sam jak port w server.properties wybranego serwera Minecraft. Istnieje tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera lobby).
+Tutaj możesz dodać swoje serwery Minecraft. Jeśli serwer proxy stoi na tej samej maszynie co dany serwer Minecraft, jako adres użyj '127.0.0.1'. Jeśli nie, wpisz adres serwera Minecraft. Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w configu Velocity musi być taki sam jak port w server.properties wybranego serwera Minecraft. Istnieje tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera lobby).
 
 **[forced-hosts]**  
 Możesz tutaj ustawić połączenia pomijające serwer lobby zależnie od podanej subdomeny. Wymagane są odpowiednie ustawienia domeny. Jeśli z tego nie korzystasz, usuń całą zawartość tej opcji.
+**Zalecane**: Usuń całą sekcję, zostawiając tylko linijkę '[forced-hosts]'.
 
 **To są wszystkie ważne opcje, pamiętaj żeby poprawnie je ustawić.**
 
 ------------------------------------------------------------------------------------------------------------
 
 # 3. Konfiguracja serwerów Minecraft
-To jeszcze nie koniec! Sam serwer Minecraft też posiada parę opcji, które trzeba zmienić. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port (server-port) taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Jeśli serwer Minecraft stoi na tej samej maszynie co serwer proxy, należy także zmienić adres IP (server-ip) na '127.0.0.1'. Pozostałe ustawienia są zależne od wersji:
+Sam serwer Minecraft też posiada parę opcji, które trzeba zmienić. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port (server-port) taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Jeśli serwer Minecraft stoi na tej samej maszynie co serwer proxy, należy także zmienić adres IP (server-ip) na '127.0.0.1'. Pozostałe ustawienia są zależne od wersji:
+
+Zacznij od ustawienia w pliku server.properties adresu IP oraz portu, które są zgodne z tymi w configu Velocity.
 
 **Dla serwerów wpuszczających wyłącznie graczy z wersji 1.13 i nowszych**  
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "MODERN"
@@ -89,19 +94,16 @@ Ten punkt opisze co można zrobić aby tryb Offline był bezpieczniejszy niż do
 **Autoryzacja**  
 Na początek warto wspomnieć, że istnieją 3 rodzaje autoryzacji - Online (Autoryzacja z serwerami Microsoftu), Offline (Autoryzacja pluginem, wszyscy gracze zakładają hasła do swojego konta na serwerze Minecraft) oraz Hybrydowa (Gracze z zakupioną grą będą autoryzowani z serwerami Microsoftu, a piraci będą autoryzowani pluginem). Istnieje wiele pluginów służących do autoryzacji graczy, jednak trzeba szczególnie uważać by nie trafić na jeden z tych gorszych - luka w takim pluginie może skutecznie zakończyć cały twój serwer. Zalecam unikać tych pluginów, których kod źródłowy nie jest dostępny publicznie.  
 
-W poradniku użyję plugin [LimboAuth](https://github.com/Elytrium/LimboAuth):
-1. Pobierz pluginy [LimboAuth](https://modrinth.com/plugin/limboauth) oraz [LimboAPI](https://modrinth.com/plugin/limboapi)
-2. Wrzuć pobrane pluginy do folderu 'plugins' w plikach serwera Velocity
-3. Otwórz plik config.yml w folderze 'plugins/limboauth'
+W poradniku użyję plugin [LibreLogin](https://github.com/kyngs/LibreLogin):
+1. Pobierz plugin [LibreLogin](https://modrinth.com/plugin/libre-login)
+2. Wrzuć pobrany plugin do folderu 'plugins' w plikach serwera Velocity
+3. Otwórz plik 'config.conf' w folderze 'plugins/LibreLogin'
 4. Zmień opcje:
-    - online-mode-need-auth: false
-    - on-rate-limit-premium: false
-    - on-server-error-premium: false
-5. Uruchom Velocity
-Teraz możesz pozmieniać opcje wizualne, takie jak komunikaty na czacie, struktura wewnątrz limbo czy bossbar.  
-**UWAGA: Jeśli twój serwer jest wystarczająco duży, podczas większego startu może dojść do ratelimitingu od strony API Microsoftu. Aby tego uniknąć, warto zmienić w configu API na inne, np. [Ashcon](https://api.ashcon.app/mojang/v2/user/Helios1993). Nie zapomnij aby zmienić także fieldy i status code aby pasowały do używanego API.**
+    - auto-register=true
+    - new-uuid-creator=MOJANG
+5. Uruchom Velocity 
 
-Inne sprawdzone pluginy: [LibreLogin](https://modrinth.com/plugin/libre-login)
+Inne sprawdzone pluginy: [LimboAuth](https://github.com/Elytrium/LimboAuth)
 
 **Weryfikacja**  
 Aby ochronić serwer przed atakiem botów, trzeba weryfikować wszystkie próby dołączenia na serwer. Filtry (tzw. antyboty) dzielą się na dwa rodzaje: wewnętrzne i zewnętrzne. Wewnętrzne filtry (pluginy) skuteczniej wykryją bota, jednak mogą być nieprzyjemne dla niektórych graczy (przykład: obowiązek przepisania kodu). Dodatkowo, podczas nawet małego ataku serwer zostanie szybko przeciążony, ponieważ całe filtrowanie odbywa się na zasobach tego serwera. Zewnętrzne filtry (proxy) to zbiory wielu maszyn stojące między graczem a serwerem Velocity. Wytrzymają wielokrotnie silniejsze ataki niż pluginy, lecz przepuszczą parę botów i mogą minimalnie zwiększyć ping. Idealnym rozwiązaniem jest użycie obu rodzajów filtrów jednocześnie.  
@@ -117,29 +119,9 @@ Inne sprawdzone pluginy: [EpicGuard](https://modrinth.com/plugin/epicguard)
 ------------------------------------------------------------------------------------------------------------
 
 # 7. Zabezpieczenie serwera przed atakami DDoS
-Ataki DDoS to problem każdego serwera, nieważne jak dużego. Na szczęście można go łatwo rozwiązać. Większość hostingów oferuje filtry wyłącznie na warstwach 3 i 4, przez co warstwa 7 (aplikacyjna) jest otwarta na ataki. Istnieje wiele filtrów, lecz lepiej uważnie się im przyjrzeć przed wyborem - niektóre z nich należą do cyberprzestępców. Ta część będzie dotyczyła głównie niskiego budżetu, ponieważ w średnim budżecie można dostać maszynę wraz z filtrami na wszystkich trzech warstwach (przykład: [CosmicGuard](https://cosmicguard.com) na hostingu [Pufferfish](https://pufferfish.host).
-W poradniku użyję [TCPShield](https://tcpshield.com) (WARUNEK: Musisz posiadać własną domenę):
-1. Załóż konto na stronie [TCPShield.com](https://tcpshield.com)
-2. Wejdź w zakładkę 'Backends' w panelu TCPShield:
-    - Naciśnij przycisk 'Add Set'
-    - W 'Name' wstaw dowolną nazwę
-    - W 'Backends' wpisz adres IP oraz port serwera Velocity
-    - Włącz opcję 'Proxy Protocol'
-    - Zapisz zmiany
-3. Wejdź w zakładkę 'Domains' w panelu TCPShield oraz w panel swojej domeny:
-    - Wyczyść ustawienia domeny
-    - Stwórz rekord CNAME z wartością z panelu TCPShield
-    - Na dole panelu TCPShield, w 'Domain management', naciśnij przycisk 'Add Domain'
-    - Wybierz swój Backend Set
-    - W opcji 'Domain' wpisz swoją domenę
-    - Naciśnij czerwony napis 'Unverified. Begin verification' pod opcją 'Domain'
-    - Naciśnij 'TXT Record'
-    - Stwórz rekord TXT z wygenerowaną wartością
-    - Naciśnij przycisk 'Verify'
-    - Naciśnij przycisk 'Add'
-4. Otwórz config Velocity
-5. Zmień opcje:
-    - haproxy-protocol = true
+Ataki DDoS to problem każdego serwera, nieważne jak dużego. Na szczęście można go łatwo rozwiązać. Większość hostingów oferuje filtry wyłącznie na warstwach 3 i 4, przez co warstwa 7 (aplikacyjna) jest otwarta na ataki. Istnieje wiele filtrów, lecz lepiej uważnie się im przyjrzeć przed wyborem - niektóre z nich należą do cyberprzestępców. Ta część będzie dotyczyła głównie niskiego budżetu, ponieważ w średnim budżecie można dostać maszynę wraz z filtrami na wszystkich trzech warstwach.
+
+**AKTUALNIE NIC TU NIE MA, ROZBUDOWANY PORADNIK POJAWI SIĘ W PRZYSZŁOŚCI**
 
 ------------------------------------------------------------------------------------------------------------
 
