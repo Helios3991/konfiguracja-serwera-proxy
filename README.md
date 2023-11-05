@@ -55,13 +55,13 @@ Zacznij od ustawienia w pliku server.properties adresu IP oraz portu, które są
 
 **Dla serwerów wpuszczających wyłącznie graczy z wersji 1.13 i nowszych**  
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "MODERN"
-2. W config/paper-global.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz hasło serwera proxy (znajdujące się w pliku forwarding.secret) w opcji 'secret'.
+2. W config/paper-global.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz klucz serwera proxy (znajdujący się w pliku forwarding.secret) w opcji 'secret'.
 
 **Dla serwerów wpuszczających graczy z wersji starszych niż 1.13**  
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "BUNGEEGUARD"
 2. W spigot.yml ustaw 'bungeecord' na 'true'
 3. Zainstaluj plugin [BungeeGuard](https://www.spigotmc.org/resources/bungeeguard.79601/) na serwerach Minecraft
-4. W configu BungeeGuarda wpisz hasło serwera proxy (znajdujące się w pliku forwarding.secret) w opcji 'allowed-tokens'
+4. W configu BungeeGuarda wpisz klucz serwera proxy (znajdujący się w pliku forwarding.secret) w opcji 'allowed-tokens'
 
 
 **Teraz możesz uruchomić swoje serwery! Jeśli wszystko dobrze zrobiłeś, będziesz mógł połączyć się przez adres i port serwera proxy.**
@@ -96,12 +96,16 @@ Na początek warto wspomnieć, że istnieją 3 rodzaje autoryzacji - Online (Aut
 
 W poradniku użyję plugin [LibreLogin](https://github.com/kyngs/LibreLogin):
 1. Pobierz plugin [LibreLogin](https://modrinth.com/plugin/libre-login)
-2. Wrzuć pobrany plugin do folderu 'plugins' w plikach serwera Velocity
-3. Otwórz plik 'config.conf' w folderze 'plugins/LibreLogin'
-4. Zmień opcje:
+2. Pobierz i jednorazowo uruchom serwer [NanoLimbo](https://github.com/Nan1t/NanoLimbo/releases) w celu wygenerowania pliku konfiguracyjnego
+3. W configu serwera NanoLimbo ustaw port mieszczący sie w przedziale 'port-range' znajdującego się w configu pluginu LibreLogin, ustaw odpowiedni forwarding oraz poprawny adres ip i wpisz klucz serwera proxy, uruchom serwer NanoLimbo
+5. Dodaj serwer NanoLimbo do configu serwera proxy tak samo jak pozostałe serwery
+6. Wrzuć LibreLogin do folderu 'plugins' w plikach serwera Velocity
+7. Otwórz plik 'config.conf' w folderze 'plugins/LibreLogin'
+8. Zmień opcje:
     - auto-register=true
     - new-uuid-creator=MOJANG
-5. Uruchom Velocity 
+9. Wpisz swoje serwery lobby oraz limbo w odpowiednie miejsca
+10. Uruchom Velocity 
 
 Inne sprawdzone pluginy: [LimboAuth](https://github.com/Elytrium/LimboAuth)
 
