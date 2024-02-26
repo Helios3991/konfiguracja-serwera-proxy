@@ -12,7 +12,7 @@ Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy d
 
 # 1. Instalacja i pierwsze uruchomienie silnika Velocity
 Aby zainstalować Velocity, należy wejść na [stronę Papera](https://papermc.io/downloads#Velocity) i pobrać najnowszy build. Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą:  
-**java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**.  
+**java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**  
 Oczywiście możesz też użyć tą komendę w swoim pliku startowym. Dla samego serwera proxy wystarczy przypisać 0.5gb pamięci RAM, jednak pluginy też trochę potrzebują, dlatego lepiej przypisać 1gb-2gb. Ważne jest też by zostawić wolny ram dla overheadu, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna powinna mieć przynajmniej 4gb. W zależności od ilości zainstalowanych pluginów może być konieczne zwiększenie przypisanego ramu (flagi Xmx oraz Xms) do 2gb.
 
 ------------------------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ Jeśli uruchomiłeś serwer proxy pewnie zauważyłeś, że wygenerowały się n
 
 **bind = "0.0.0.0:25577"**  
 Pozwala zmienić port serwera proxy oraz wybrać jeden z adresów IP w przypadku gdy maszyna posiada ich więcej niż 1. Adres 0.0.0.0 oznacza listę wszystkich dostępnych adresów IP.  
-**Zalecane**: "0.0.0.0:25565"
+**Zalecane**: Jeśli posiadasz cały adres IP - "0.0.0.0:25565". Jeśli nie, wpisz port który otrzymałeś od swojego hostingu.
 
 **motd = "<#09add3>A Velocity Server"**  
 Pozwala zmienić tekst wyświetlający się w liście serwerów. Zazwyczaj używane są do tego pluginy, ponieważ oferują większą funkcjonalność.
@@ -38,7 +38,7 @@ Pozwala wybrać tryb przesyłu UUID oraz adresów IP dołączających graczy mi�
 **Zalecane**: "MODERN"
 
 **[servers]**  
-Tutaj możesz dodać swoje serwery Minecraft. Jeśli serwer proxy stoi na tej samej maszynie co dany serwer Minecraft, jako adres użyj '127.0.0.1'. Jeśli nie, wpisz adres serwera Minecraft. Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w configu Velocity musi być taki sam jak port w server.properties wybranego serwera Minecraft. Istnieje tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera lobby).
+Tutaj możesz dodać swoje serwery Minecraft. Więcej informacji na temat adresów które powinieneś użyć znajdziesz w sekcji [Networking](https://github.com/Helios3991/konfiguracja-serwera-proxy#5-networking). Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w configu Velocity musi być taki sam jak port w server.properties wybranego serwera Minecraft. Istnieje tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera lobby).
 
 **[forced-hosts]**  
 Możesz tutaj ustawić połączenia pomijające serwer lobby zależnie od podanej subdomeny. Wymagane są odpowiednie ustawienia domeny. Jeśli z tego nie korzystasz, usuń całą zawartość tej opcji.  
@@ -83,7 +83,23 @@ Opisane tu zmiany nie są tak niezbędne jak te wcześniejsze, jednak często s�
 
 ------------------------------------------------------------------------------------------------------------
 
-# 5. Niebezpieczeństwa trybu Offline
+# 5. Networking
+Poprawna konfiguracja ruchu sieciowego między serwerami ma ogromny wpływ na bezpieczeństwo twojej sieci serwerów, a także na użycie zasobów łącza.  
+
+**Na początek wyjaśnię parę terminów:**  
+Sieć publiczna/globalna - To właśnie nazywamy Internetem. Jeśli posiadasz dostęp do internetu, nieważne gdzie jesteś, możesz połączyć się z dowolnym urządzeniem w sieci publicznej.
+Sieć lokalna - Taka sieć jest dużo mniejsza niż sieć globalna i ogranicza się do urządzeń stojących za pojedynczym routerem. Lokalny ruch sieciowy nie wydostaje się do sieci publicznej poprzez router. To właśnie poprzez sieć lokalną przechodzi ruch sieciowy podczas gry LAN czy komunikacji z drukarką.
+Adres publiczny - To adres twojego routera w sieci publicznej (przykład: 104.28.212.230). Otwierając usługę sieciową na tym adresie będzie ona widoczna w całej sieci globalnej. Placeholder adresowy '0.0.0.0' oznacza wszystkie publiczne adresy IP do których urządzenie posiada dostęp.
+Adres prywatny - To adres pojedynczego urządzenia w sieci lokalnej. Dla przykładu, router może mieć adres 192.168.0.1, komputer 192.168.0.10, a drukarka 192.168.0.15. Otwierając usługę sieciową na tym adresie będzie ona widoczna wyłącznie w sieci lokalnej.
+Adres lokalny(localhost) - Znany już niektórym adres 127.0.0.1, to adres dostępny dla pojedynczego (wirtualnego) urządzenia. Usługa sieciowa otwarta na tym adresie nie będzie widoczna nawet w sieci lokalnej.
+Adres niestandardowy - Są to adresy wprowadzone przez zewnętrzne oprogramowanie do specyficznych zastosowań. Przykładowo popularny panel dla serwerów gier Pterodactyl wprowadza adres 172.18.0.1, który pozwala połączyć się jedynie z poziomu jednego Node'a. Niektóre hostingi zarządzane oferują także adresy wewnętrzne, które są ograniczone do pojedynczego pakietu zasobów (przykład: [Bloom](https://demo.bloom.host), adres 'ec4a194c-c98d-44db-ab76-5b5bd99fbc98').
+Serwer backendowy - To serwer, do którego dostęp potrzebują jedynie inne serwery. Przykładami takich serwerów są np. bazy danych oraz serwery Minecraft stojące za serwerem proxy.
+
+Twoim celem jest obniżenie poziomu dostępu do sieci oraz trasy ruchu sieciowego dla serwerów backendowych do minimum, w którym twoje pozostałe serwery nadal mogą się z nimi kontaktować. Jeśli korzystasz z pojedynczej maszyny niezarządzanej (vps/dedyk), otwórz serwery backendowe na adresie 127.0.0.1. Jeśli twój hosting zarządzany oferuje adresy wewnętrzne, nie zawahaj się z nich skorzystać. Jeśli stoisz na jednym Node w czystym Pterodactylu, użyj adres 172.18.0.1. Jeśli twój hosting nie oferuje żadnych funkcjonalności dotyczących konfiguracji ruchu sieciowego, to znaczy że nie jest on odpowiednio dostosowany pod sieci serwerów i powinieneś poszukać alternatywy.
+
+------------------------------------------------------------------------------------------------------------
+
+# 6. Niebezpieczeństwa trybu Offline
 Tryb Offline charakteryzuje się brakiem autoryzacji z serwerami Microsoftu. Pozwala dołączać graczom z piracką wersją Minecrafta, potocznie (i bardzo myląco) nazywaną Non-Premium. Dla niektórych właścicieli serwerów może to być pożądane działanie, jednak niesie to ze sobą wiele problemów i niebezpieczeństw. Do poważniejszych z nich można zaliczyć: możliwość dołączania z dowolną nazwą użytkownika bez jakiejkolwiek autoryzacji, ataki z wykorzystaniem botów, proste i szybkie tworzenie wielu kont oraz problemy dotyczące UUID w niektórych pluginach. Niektóre problemy można częściowo ukryć, jednak nie są to skuteczne rozwiązania.
 
 ------------------------------------------------------------------------------------------------------------
