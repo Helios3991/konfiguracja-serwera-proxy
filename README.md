@@ -87,13 +87,14 @@ Opisane tu zmiany nie są tak niezbędne jak te wcześniejsze, jednak często s�
 Poprawna konfiguracja ruchu sieciowego między serwerami ma ogromny wpływ na bezpieczeństwo twojej sieci serwerów, a także na użycie zasobów łącza.  
 
 **Na początek wyjaśnię parę terminów:**  
-Sieć publiczna/globalna - To właśnie nazywamy Internetem. Jeśli posiadasz dostęp do internetu, nieważne gdzie jesteś, możesz połączyć się z dowolnym urządzeniem w sieci publicznej.
-Sieć lokalna - Taka sieć jest dużo mniejsza niż sieć globalna i ogranicza się do urządzeń stojących za pojedynczym routerem. Lokalny ruch sieciowy nie wydostaje się do sieci publicznej poprzez router. To właśnie poprzez sieć lokalną przechodzi ruch sieciowy podczas gry LAN czy komunikacji z drukarką.
-Adres publiczny - To adres twojego routera w sieci publicznej (przykład: 104.28.212.230). Otwierając usługę sieciową na tym adresie będzie ona widoczna w całej sieci globalnej. Placeholder adresowy '0.0.0.0' oznacza wszystkie publiczne adresy IP do których urządzenie posiada dostęp.
-Adres prywatny - To adres pojedynczego urządzenia w sieci lokalnej. Dla przykładu, router może mieć adres 192.168.0.1, komputer 192.168.0.10, a drukarka 192.168.0.15. Otwierając usługę sieciową na tym adresie będzie ona widoczna wyłącznie w sieci lokalnej.
-Adres lokalny(localhost) - Znany już niektórym adres 127.0.0.1, to adres dostępny dla pojedynczego (wirtualnego) urządzenia. Usługa sieciowa otwarta na tym adresie nie będzie widoczna nawet w sieci lokalnej.
-Adres niestandardowy - Są to adresy wprowadzone przez zewnętrzne oprogramowanie do specyficznych zastosowań. Przykładowo popularny panel dla serwerów gier Pterodactyl wprowadza adres 172.18.0.1, który pozwala połączyć się jedynie z poziomu jednego Node'a. Niektóre hostingi zarządzane oferują także adresy wewnętrzne, które są ograniczone do pojedynczego pakietu zasobów (przykład: [Bloom](https://demo.bloom.host), adres 'ec4a194c-c98d-44db-ab76-5b5bd99fbc98').
-Serwer backendowy - To serwer, do którego dostęp potrzebują jedynie inne serwery. Przykładami takich serwerów są np. bazy danych oraz serwery Minecraft stojące za serwerem proxy.
+1. Sieć publiczna/globalna - To właśnie nazywamy Internetem. Jeśli posiadasz dostęp do internetu, nieważne gdzie jesteś, możesz połączyć się z dowolnym urządzeniem w sieci publicznej.
+2. Sieć lokalna - Taka sieć jest dużo mniejsza niż sieć globalna i ogranicza się do urządzeń stojących za pojedynczym routerem. Lokalny ruch sieciowy nie wydostaje się do sieci publicznej poprzez router. To właśnie poprzez sieć lokalną przechodzi ruch sieciowy
+podczas gry LAN czy komunikacji z drukarką.
+3. Adres publiczny - To adres twojego routera w sieci publicznej (przykład: 104.28.212.230). Otwierając usługę sieciową na tym adresie będzie ona widoczna w całej sieci globalnej. Placeholder adresowy '0.0.0.0' oznacza wszystkie publiczne adresy IP do których urządzenie posiada dostęp.
+4. Adres prywatny - To adres pojedynczego urządzenia w sieci lokalnej. Dla przykładu, router może mieć adres 192.168.0.1, komputer 192.168.0.10, a drukarka 192.168.0.15. Otwierając usługę sieciową na tym adresie będzie ona widoczna wyłącznie w sieci lokalnej.
+5. Adres lokalny(localhost) - Znany już niektórym adres 127.0.0.1, to adres dostępny dla pojedynczego (wirtualnego) urządzenia. Usługa sieciowa otwarta na tym adresie nie będzie widoczna nawet w sieci lokalnej.
+6. Adres niestandardowy - Są to adresy wprowadzone przez zewnętrzne oprogramowanie do specyficznych zastosowań. Przykładowo popularny panel dla serwerów gier Pterodactyl wprowadza adres 172.18.0.1, który pozwala połączyć się jedynie z poziomu jednego Node'a. Niektóre hostingi zarządzane oferują także adresy wewnętrzne, które są ograniczone do pojedynczego pakietu zasobów (przykład: [Bloom](https://demo.bloom.host), adres 'ec4a194c-c98d-44db-ab76-5b5bd99fbc98').
+7. Serwer backendowy - To serwer, do którego dostęp potrzebują jedynie inne serwery. Przykładami takich serwerów są np. bazy danych oraz serwery Minecraft stojące za serwerem proxy.
 
 Twoim celem jest obniżenie poziomu dostępu do sieci oraz trasy ruchu sieciowego dla serwerów backendowych do minimum, w którym twoje pozostałe serwery nadal mogą się z nimi kontaktować. Jeśli korzystasz z pojedynczej maszyny niezarządzanej (vps/dedyk), otwórz serwery backendowe na adresie 127.0.0.1. Jeśli twój hosting zarządzany oferuje adresy wewnętrzne, nie zawahaj się z nich skorzystać. Jeśli stoisz na jednym Node w czystym Pterodactylu, użyj adres 172.18.0.1. Jeśli twój hosting nie oferuje żadnych funkcjonalności dotyczących konfiguracji ruchu sieciowego, to znaczy że nie jest on odpowiednio dostosowany pod sieci serwerów i powinieneś poszukać alternatywy.
 
@@ -113,15 +114,20 @@ Na początek warto wspomnieć, że istnieją 3 rodzaje autoryzacji - Online (Aut
 W poradniku użyję plugin [LibreLogin](https://github.com/kyngs/LibreLogin):
 1. Pobierz plugin [LibreLogin](https://modrinth.com/plugin/libre-login)
 2. Pobierz i jednorazowo uruchom serwer [NanoLimbo](https://github.com/Nan1t/NanoLimbo/releases) w celu wygenerowania pliku konfiguracyjnego
-3. W configu serwera NanoLimbo ustaw port mieszczący sie w przedziale 'port-range' znajdującego się w configu pluginu LibreLogin, ustaw odpowiedni forwarding oraz poprawny adres ip i wpisz klucz serwera proxy, uruchom serwer NanoLimbo
+3. Zmień opcje:
+     - bind.port: Port który chcesz użyć dla serwera Limbo
+     - bind.ip: Adres który chcesz użyć dla serwera Limbo
+     - infoForwarding.type: MODERN
+     - infoForwarding.secret: Klucz serwera proxy
 5. Dodaj serwer NanoLimbo do configu serwera proxy tak samo jak pozostałe serwery
 6. Wrzuć LibreLogin do folderu 'plugins' w plikach serwera Velocity
 7. Otwórz plik 'config.conf' w folderze 'plugins/LibreLogin'
 8. Zmień opcje:
     - auto-register=true
     - new-uuid-creator=MOJANG
-9. Wpisz swoje serwery lobby oraz limbo w odpowiednie miejsca
-10. Uruchom Velocity 
+9. Wpisz swoje serwery lobby oraz Limbo w odpowiednie miejsca
+10. Skonfiguruj przedział portów dla serwera Limbo w pliku konfiguracyjnym LibreLoginu tak, aby mieścił się w nim port twojego serwera Limbo
+11. Uruchom Velocity 
 
 Inne sprawdzone pluginy: [LimboAuth](https://github.com/Elytrium/LimboAuth)
 
