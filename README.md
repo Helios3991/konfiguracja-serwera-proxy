@@ -13,7 +13,7 @@ Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy d
 # 1. Instalacja i pierwsze uruchomienie silnika Velocity
 Aby zainstalować Velocity, należy wejść na [stronę Papera](https://papermc.io/downloads#Velocity) i pobrać najnowszy build. Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą:  
 **java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**  
-Oczywiście możesz też użyć tą komendę w swoim pliku startowym. Dla samego serwera proxy wystarczy przypisać 0.5gb pamięci RAM, jednak pluginy też trochę potrzebują, dlatego lepiej przypisać 1gb-2gb. Ważne jest też by zostawić wolny ram dla overheadu, autor Velocity zaleca by w systemie zostało tyle samo ramu ile jest przy pisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna powinna mieć przynajmniej 4gb. W zależności od ilości zainstalowanych pluginów może być konieczne zwiększenie przypisanego ramu (flagi Xmx oraz Xms) do 2gb.
+Oczywiście możesz też użyć tą komendę w swoim pliku startowym. Dla samego serwera proxy wystarczy przypisać 0.5gb pamięci RAM, jednak pluginy też trochę potrzebują, dlatego lepiej przypisać 1gb-2gb. Ważne jest też by zostawić wolny ram dla overheadu, autor Velocity zaleca by w systemie zostało tyle samo ramu, ile jest przypisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna powinna mieć przynajmniej 4gb. W zależności od ilości zainstalowanych pluginów może być konieczne zwiększenie przypisanego ramu (flagi Xmx oraz Xms) do 2gb.
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ Oczywiście możesz też użyć tą komendę w swoim pliku startowym. Dla samego
 Jeśli uruchomiłeś serwer proxy pewnie zauważyłeś, że wygenerowały się nowe pliki. Ważny dla ciebie jest plik 'velocity.toml'. Opiszę kilka ważniejszych opcji:
 
 **bind = "0.0.0.0:25577"**  
-Pozwala zmienić port serwera proxy oraz wybrać jeden z adresów IP w przypadku gdy maszyna posiada ich więcej niż 1. Adres 0.0.0.0 oznacza listę wszystkich dostępnych adresów IP.  
+Pozwala zmienić port serwera proxy oraz wybrać jeden z adresów IP w przypadku, gdy maszyna posiada ich więcej niż 1. Adres 0.0.0.0 oznacza listę wszystkich dostępnych adresów IP.  
 **Zalecane**: Jeśli posiadasz cały adres IP - "0.0.0.0:25565". Jeśli nie, wpisz port który otrzymałeś od swojego hostingu.
 
 **motd = "<#09add3>A Velocity Server"**  
@@ -34,7 +34,7 @@ Wyświetlana w liście serwerów maksymalna ilość slotów.
 Opcja ta sama co w przypadku serwera Minecraft - pozwala przełączyć autoryzację graczy z serwerami Microsoftu. Wyłączenie jej pozwoli dołączać na serwer graczom z piracką wersją gry oraz otworzy wiele luk w bezpieczeństwie, dlatego zalecam zostawić ją włączoną.
 
 **player-info-forwarding-mode = "NONE"**  
-Pozwala wybrać tryb przesyłu UUID oraz adresów IP dołączających graczy między serwerem proxy a serwerem Minecraft. Jeśli twój serwer wpuszcza graczy tylko z wersji 1.13 lub nowszych, ustaw ją na "MODERN". Jeśli jednak na serwer mogą wchodzić gracze z wersji starszych niż 1.13, wpisz tu "BUNGEEGUARD". Na każdej z tych opcji inaczej konfiguruje się serwery Minecraft aby przyjmowały połączenia z serwera proxy, zostało to opisane w punkcie 3.  
+Pozwala wybrać tryb przesyłu UUID oraz adresów IP dołączających graczy między serwerem proxy a serwerem Minecraft. Jeśli twój serwer wpuszcza graczy tylko z wersji 1.13 lub nowszych, ustaw ją na "MODERN". Jeśli jednak na serwer mogą wchodzić gracze z wersji starszych niż 1.13, wpisz tu "BUNGEEGUARD". Na każdej z tych opcji inaczej konfiguruje się serwery Minecraft, aby przyjmowały połączenia z serwera proxy, zostało to opisane w punkcie 3.  
 **Zalecane**: "MODERN"
 
 **[servers]**  
@@ -69,15 +69,15 @@ Zacznij od ustawienia w pliku server.properties adresu IP oraz portu, które są
 ------------------------------------------------------------------------------------------------------------
 
 # 4. Dodatkowa konfiguracja
-Opisane tu zmiany nie są tak niezbędne jak te wcześniejsze, jednak często są przydatne. Poprawiają ogólne działanie sieci, więc warto z nich skorzystać jeśli spełniasz warunki.
+Opisane tu zmiany nie są tak niezbędne jak te wcześniejsze, jednak często są przydatne. Poprawiają ogólne działanie sieci, więc warto z nich skorzystać, jeśli spełniasz warunki.
 
 **tcp-fast-open - Velocity**  
-- Przyspiesza łączenie się gracza z serwerem Proxy jeśli serwer ten stoi na dowolnej dystrybucji Linuxa.
+- Przyspiesza łączenie się gracza z serwerem Proxy, jeśli serwer ten stoi na dowolnej dystrybucji Linuxa.
 - Zalecana wartość: true
 - Warunek: Serwer proxy musi stać na Linuxie.
 
 **network-compression-threshold - Server.properties**  
-- Gdy serwer Minecraft stoi na tej samej maszynie co serwer proxy to nie musi on kompresować przesyłanych danych, ponieważ wysyła je tylko do serwera proxy, który zajmuje się kompresją. Nie zmieniaj tej opcji jeśli serwery stoją na różnych maszynach.
+- Gdy serwer Minecraft stoi na tej samej maszynie co serwer proxy to nie musi on kompresować przesyłanych danych, ponieważ wysyła je tylko do serwera proxy, który zajmuje się kompresją. Nie zmieniaj tej opcji, jeśli serwery stoją na różnych maszynach.
 - Zalecana wartość: -1
 - Warunek: Serwer musi stać na tej samej maszynie co proxy.
 
@@ -87,7 +87,7 @@ Opisane tu zmiany nie są tak niezbędne jak te wcześniejsze, jednak często s�
 Poprawna konfiguracja ruchu sieciowego między serwerami ma ogromny wpływ na bezpieczeństwo twojej sieci serwerów, a także na użycie zasobów łącza.  
 
 **Na początek wyjaśnię parę terminów:**  
-1. Sieć publiczna/globalna - To właśnie nazywamy Internetem. Jeśli posiadasz dostęp do internetu, nieważne gdzie jesteś, możesz połączyć się z dowolnym urządzeniem w sieci publicznej.
+1. Sieć publiczna/globalna - To właśnie nazywamy Internetem. Jeśli posiadasz dostęp do Internetu, nieważne gdzie jesteś, możesz połączyć się z dowolnym urządzeniem w sieci publicznej.
 2. Sieć lokalna - Taka sieć jest dużo mniejsza niż sieć globalna i ogranicza się do urządzeń stojących za pojedynczym routerem. Lokalny ruch sieciowy nie wydostaje się do sieci publicznej poprzez router. To właśnie poprzez sieć lokalną przechodzi ruch sieciowy
 podczas gry LAN czy komunikacji z drukarką.
 3. Adres publiczny - To adres twojego routera w sieci publicznej (przykład: 104.28.212.230). Otwierając usługę sieciową na tym adresie będzie ona widoczna w całej sieci globalnej. Placeholder adresowy '0.0.0.0' oznacza wszystkie publiczne adresy IP do których urządzenie posiada dostęp.
@@ -106,7 +106,7 @@ Tryb Offline charakteryzuje się brakiem autoryzacji z serwerami Microsoftu. Po
 ------------------------------------------------------------------------------------------------------------
 
 # 6. Zabezpieczenie trybu Offline
-Ten punkt opisze co można zrobić aby tryb Offline był bezpieczniejszy niż domyślnie. Jeśli zdecydowałeś się na tryb Online, możesz go pominąć.
+Ten punkt opisze co można zrobić, aby tryb Offline był bezpieczniejszy niż domyślnie. Jeśli zdecydowałeś się na tryb Online, możesz go pominąć.
 
 **Autoryzacja**  
 Na początek warto wspomnieć, że istnieją 3 rodzaje autoryzacji - Online (Autoryzacja z serwerami Microsoftu), Offline (Autoryzacja pluginem, wszyscy gracze zakładają hasła do swojego konta na serwerze Minecraft) oraz Hybrydowa (Gracze z zakupioną grą będą autoryzowani z serwerami Microsoftu, a piraci będą autoryzowani pluginem). Istnieje wiele pluginów służących do autoryzacji graczy, jednak trzeba szczególnie uważać by nie trafić na jeden z tych gorszych - luka w takim pluginie może skutecznie zakończyć cały twój serwer. Zalecam unikać tych pluginów, których kod źródłowy nie jest dostępny publicznie.  
