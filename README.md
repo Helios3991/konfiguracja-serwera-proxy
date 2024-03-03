@@ -105,7 +105,7 @@ Tryb Offline charakteryzuje się brakiem autoryzacji z serwerami Microsoftu. Po
 
 ------------------------------------------------------------------------------------------------------------
 
-# 6. Zabezpieczenie trybu Offline
+# 7. Zabezpieczenie trybu Offline
 Ten punkt opisze co można zrobić, aby tryb Offline był bezpieczniejszy niż domyślnie. Jeśli zdecydowałeś się na tryb Online, możesz go pominąć.
 
 **Autoryzacja**  
@@ -144,14 +144,14 @@ Inne sprawdzone pluginy: [EpicGuard](https://github.com/4drian3d/EpicGuard)
 
 ------------------------------------------------------------------------------------------------------------
 
-# 7. Zabezpieczenie serwera przed atakami DDoS
+# 8. Zabezpieczenie serwera przed atakami DDoS
 Ataki DDoS to problem każdego serwera, nieważne jak dużego. Na szczęście można go łatwo rozwiązać. Większość hostingów oferuje filtry wyłącznie na warstwach 3 i 4, przez co warstwa 7 (aplikacyjna) jest otwarta na ataki. Istnieje wiele filtrów, lecz lepiej uważnie się im przyjrzeć przed wyborem - niektóre z nich należą do cyberprzestępców. Ta część będzie dotyczyła głównie niskiego budżetu, ponieważ w średnim budżecie można dostać maszynę wraz z filtrami na wszystkich trzech warstwach.
 
 **AKTUALNIE NIC TU NIE MA, ROZBUDOWANY PORADNIK POJAWI SIĘ W PRZYSZŁOŚCI**
 
 ------------------------------------------------------------------------------------------------------------
 
-# 8. Przydatne pluginy na serwer proxy
+# 9. Przydatne pluginy na serwer proxy
 Kiedyś sporym minusem Velocity były małe ilości pluginów, jednak aktualnie coraz częściej można spotkać plugin wspierający Velocity, ale niewspierający BungeeCorda. Pluginy Velocity znajdują się przede wszystkim na [Modrinth](https://modrinth.com/plugins?g=categories:%27velocity%27) oraz [Hangar](https://hangar.papermc.io/?platform=VELOCITY). Większość pluginów dla BungeeCorda ze SpigotMC także posiada wsparcie dla Velocity.
 Kilka polecanych pluginów:
 - [LuckPerms](https://luckperms.net/) - Pozwala zarządzać uprawnieniami i rangami.
