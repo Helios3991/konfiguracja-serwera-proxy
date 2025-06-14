@@ -2,11 +2,7 @@
 **Poradnik ten został napisany pod najnowsze wersje silników Paper oraz Velocity i jest aktywnie rozwijany. Jeśli korzystasz ze starszych wersji któregoś z tych silników, konfiguracja może się różnić.**
 
 # 0. Dlaczego Velocity?
-Częstym błędem wielu osób jest korzystanie z przestarzałego, lecz poznanego już software'u. Mogą to być pluginy, silnik serwera Minecraft, a także silnik serwera proxy. Przykładem tego jest BungeeCord, który jest bardzo zasobożerny (w porównaniu z alternatywami) i mało bezpieczny. Do popularnych silników proxy można zaliczyć także WaterFall, stary projekt twórcy Velocity, który nie jest już aktywnie rozwijany.
-
-Kolejnym błędem jest korzystanie z tzw. scamforków. Są to forki BungeeCorda/WaterFalla w formie closed source, które najczęściej można znaleźć na stronie BuiltByBit (wcześniej MC-Market). Charakteryzują się one niską jakością wykonania, niestabilnością oraz "ładnymi opisami". Często opisy te zawierają nieprawdziwe informacje mające na celu bardziej przekonać potencjalnego klienta do zakupu, przykładem jest fearmongering na temat tzw. Crasherów - ataków na warstwie aplikacyjnej, które wykorzystują luki w kodzie w celu przeciążenia lub natychmiastowego zatrzymania procesu serwera. Tu trzeba pamiętać, że błędy tego typu są na samym szczycie priorytetów teamu Papera, a więc zarówno Velocity, jak i WaterFall naprawiają je jako pierwsze.
-
-Autor Velocity posiada największe doświadczenie w dziedzinie serwerów proxy dla Minecrafta. Do jego portfolio zaliczają się przede wszystkim WaterFall oraz RedisBungee, a także dwie modyfikacje poprawiające wydajność: Krypton i LazyDFU. Velocity jest dwukrotnie wydajniejszy niż WaterFall, a do tego oferuje lepsze bezpieczeństwo. Jest mniej podatny na potencjalne exploity oraz oferuje funkcję Modern Forwarding, dzięki której konfiguracja firewalla nie jest aż tak niezbędna jak w przypadku silników bazujących na BungeeCordzie.
+Kiedyś znajdowało się tu wyjaśnienie przewag Velocity nad BungeeCordem, ale jako że BungeeCord już umarł, uważam iż jest ono zbędne. Według statystyk bStats, na ten moment Velocity jest dwukrotnie popularniejszy niż BungeeCord i wszystkie silniki na nim bazujące razem wzięte.
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -38,7 +34,7 @@ Pozwala wybrać tryb przesyłu UUID oraz adresów IP dołączających graczy mi�
 **Zalecane**: "MODERN"
 
 **[servers]**  
-Tutaj możesz dodać swoje serwery Minecraft. Więcej informacji na temat adresów które powinieneś użyć znajdziesz w sekcji [Networking](https://github.com/Helios3991/konfiguracja-serwera-proxy#5-networking). Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w configu Velocity musi być taki sam jak port w server.properties wybranego serwera Minecraft. Istnieje tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera lobby).
+Tutaj możesz dodać swoje serwery Minecraft. Pamiętaj by NIE używać tutaj publicznego adresu ip, a zamiast tego adres lokalny/wewnętrzny. Więcej informacji na ten temat znajdziesz w sekcji [Networking](https://github.com/Helios3991/konfiguracja-serwera-proxy#5-networking). Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w tej sekcji musi być taki sam jak port w pliku server.properties wybranego serwera Minecraft. Znajduje się tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera Lobby).
 
 **[forced-hosts]**  
 Możesz tutaj ustawić połączenia pomijające serwer lobby zależnie od podanej subdomeny. Wymagane są odpowiednie ustawienia domeny. Jeśli z tego nie korzystasz, usuń całą zawartość tej opcji.  
@@ -60,7 +56,7 @@ Zacznij od ustawienia w pliku server.properties adresu IP oraz portu, które są
 **Dla serwerów wpuszczających graczy z wersji starszych niż 1.13**  
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "BUNGEEGUARD"
 2. W spigot.yml ustaw 'bungeecord' na 'true'
-3. Zainstaluj plugin [BungeeGuard](https://www.spigotmc.org/resources/bungeeguard.79601/) na serwerach Minecraft
+3. Zainstaluj plugin [BungeeGuard](https://github.com/nickuc-com/BungeeGuardPlus/releases) na serwerach Minecraft
 4. W configu BungeeGuarda wpisz klucz serwera proxy (znajdujący się w pliku forwarding.secret) w opcji 'allowed-tokens'
 
 
@@ -91,12 +87,14 @@ Poprawna konfiguracja ruchu sieciowego między serwerami ma ogromny wpływ na be
 2. Sieć lokalna - Taka sieć jest dużo mniejsza niż sieć globalna i ogranicza się do urządzeń stojących za pojedynczym routerem. Lokalny ruch sieciowy nie wydostaje się do sieci publicznej poprzez router. To właśnie poprzez sieć lokalną przechodzi ruch sieciowy
 podczas gry LAN czy komunikacji z drukarką.
 3. Adres publiczny - To adres twojego routera w sieci publicznej (przykład: 104.28.212.230). Otwierając usługę sieciową na tym adresie będzie ona widoczna w całej sieci globalnej. Placeholder adresowy '0.0.0.0' oznacza wszystkie publiczne adresy IP do których urządzenie posiada dostęp.
-4. Adres prywatny - To adres pojedynczego urządzenia w sieci lokalnej. Dla przykładu, router może mieć adres 192.168.0.1, komputer 192.168.0.10, a drukarka 192.168.0.15. Otwierając usługę sieciową na tym adresie będzie ona widoczna wyłącznie w sieci lokalnej.
-5. Adres lokalny(localhost) - Znany już niektórym adres 127.0.0.1, to adres dostępny dla pojedynczego (wirtualnego) urządzenia. Usługa sieciowa otwarta na tym adresie nie będzie widoczna nawet w sieci lokalnej.
-6. Adres niestandardowy - Są to adresy wprowadzone przez zewnętrzne oprogramowanie do specyficznych zastosowań. Przykładowo popularny panel dla serwerów gier Pterodactyl wprowadza adres 172.18.0.1, który pozwala połączyć się jedynie z poziomu jednego Node'a. Niektóre hostingi zarządzane oferują także adresy wewnętrzne, które są ograniczone do pojedynczego pakietu zasobów (przykład: [Bloom](https://demo.bloom.host), adres 'ec4a194c-c98d-44db-ab76-5b5bd99fbc98').
+4. Adres loopback (localhost) - Znany już niektórym adres 127.0.0.1, to adres "samego siebie", usługa sieciowa na nim uruchomiona będzie widoczna tylko dla aplikacji otwartych na tej samej (wirtualnej) karcie sieciowej. Zalecany w przypadku serwerów niezarządzanych, takich jak VPS.
+5. Adres wewnętrzny - To adres pojedynczego urządzenia w sieci lokalnej. Dla przykładu, router może mieć adres 192.168.0.1, komputer 192.168.0.10, a drukarka 192.168.0.15. Otwierając usługę sieciową na tym adresie będzie ona widoczna wyłącznie w danej sieci lokalnej. Jeśli nie posiadasz własnego VLAN-a, zazwyczaj obejmują całą infrastrukturę hostingu.
+6. Adres niestandardowy - Są to adresy wprowadzone przez zewnętrzne oprogramowanie do specyficznych zastosowań. Przykładowo popularny panel dla serwerów gier Pterodactyl wprowadza adres 172.18.0.1, który pozwala połączyć się jedynie z poziomu jednego Node'a. Niektóre hostingi zarządzane oferują także adresy prywatne, które są ograniczone do pojedynczego pakietu zasobów.
 7. Serwer backendowy - To serwer, do którego dostęp potrzebują jedynie inne serwery. Przykładami takich serwerów są np. bazy danych oraz serwery Minecraft stojące za serwerem proxy.
 
-Twoim celem jest obniżenie poziomu dostępu do sieci oraz trasy ruchu sieciowego dla serwerów backendowych do minimum, w którym twoje pozostałe serwery nadal mogą się z nimi kontaktować. Jeśli korzystasz z pojedynczej maszyny niezarządzanej (vps/dedyk), otwórz serwery backendowe na adresie 127.0.0.1. Jeśli twój hosting zarządzany oferuje adresy wewnętrzne, nie zawahaj się z nich skorzystać. Jeśli stoisz na jednym Node w czystym Pterodactylu, użyj adres 172.18.0.1. Jeśli twój hosting nie oferuje żadnych funkcjonalności dotyczących konfiguracji ruchu sieciowego, to znaczy że nie jest on odpowiednio dostosowany pod sieci serwerów i powinieneś poszukać alternatywy.
+Twoim celem jest obniżenie poziomu dostępu do sieci oraz trasy ruchu sieciowego dla serwerów backendowych do minimum, w którym twoje pozostałe serwery nadal mogą się z nimi kontaktować. Jeśli korzystasz z pojedynczej maszyny niezarządzanej (vps/dedyk), otwórz serwery backendowe na adresie 127.0.0.1. Jeśli twój hosting zarządzany oferuje adresy wewnętrzne, najczęściej w zakładce panelu związanej z siecią/portami, nadaj je dla serwerów backendowych. Jeśli stoisz na jednym Node w czystym Pterodactylu, użyj adres 172.18.0.1. Jeśli twój hosting nie oferuje żadnych funkcjonalności dotyczących konfiguracji ruchu sieciowego, to znaczy że nie jest on odpowiednio dostosowany pod sieci serwerów i powinieneś poszukać alternatywy.
+
+W przypadku hostingów zarządzanych (z panelem), opcja przełączenia serwera na sieć prywatną lub wewnętrzną znajduje się zazwyczaj w zakładce dotyczącej sieci lub portów. Utwórz nowy port prywatny/wewnętrzny, ustaw go jako port główny i usuń poprzedni port. Jeśli masz na tym etapie problem, skontaktuj się z supportem swojego hostingu.
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -113,12 +111,13 @@ Na początek warto wspomnieć, że istnieją 3 rodzaje autoryzacji - Online (Aut
 
 W poradniku użyję plugin [LibreLogin](https://github.com/kyngs/LibreLogin):
 1. Pobierz plugin [LibreLogin](https://modrinth.com/plugin/libre-login)
-2. Pobierz i jednorazowo uruchom serwer [NanoLimbo](https://github.com/Nan1t/NanoLimbo/releases) w celu wygenerowania pliku konfiguracyjnego
-3. Zmień opcje:
+2. Pobierz i jednorazowo uruchom serwer [NanoLimbo](https://github.com/BoomEaro/NanoLimbo/releases) w celu wygenerowania pliku konfiguracyjnego
+     - jeśli czujesz się na siłach to możesz także wybrać inny silnik serwera limbo, np. [PicoLimbo](https://github.com/Quozul/PicoLimbo). Poradnik skupi się na NanoLimbo ze względu na prostotę konfiguracji
+4. Zmień opcje w configu NanoLimbo:
      - bind.port: Port który chcesz użyć dla serwera Limbo
      - bind.ip: Adres który chcesz użyć dla serwera Limbo
-     - infoForwarding.type: MODERN
-     - infoForwarding.secret: Klucz serwera proxy
+     - infoForwarding.type: MODERN / BUNGEE_GUARD, zależnie co wybrałeś wcześniej
+     - infoForwarding.secret / tokens: Klucz serwera proxy
 5. Dodaj serwer NanoLimbo do configu serwera proxy tak samo jak pozostałe serwery
 6. Wrzuć LibreLogin do folderu 'plugins' w plikach serwera Velocity
 7. Otwórz plik 'config.conf' w folderze 'plugins/LibreLogin'
@@ -132,22 +131,25 @@ W poradniku użyję plugin [LibreLogin](https://github.com/kyngs/LibreLogin):
 Inne sprawdzone pluginy: [LimboAuth](https://github.com/Elytrium/LimboAuth)
 
 **Weryfikacja**  
-Aby ochronić serwer przed atakiem botów, trzeba weryfikować wszystkie próby dołączenia na serwer. Filtry (tzw. antyboty) dzielą się na dwie rodziny: wewnętrzne i zewnętrzne. Wewnętrzne filtry (pluginy) skuteczniej wykryją bota, jednak mogą być nieprzyjemne dla niektórych graczy (przykład: blokada vpn, obowiązek przepisania kodu). Dodatkowo, podczas nawet małego ataku serwer zostanie szybko przeciążony, ponieważ całe filtrowanie odbywa się na zasobach tego serwera. Zewnętrzne filtry (proxy) to zbiory wielu maszyn stojące między graczem a serwerem Velocity. Wytrzymają wielokrotnie silniejsze ataki niż pluginy, lecz przepuszczą parę botów i mogą minimalnie zwiększyć ping. Idealnym rozwiązaniem jest użycie obu rodzajów filtrów jednocześnie.  
+Aby ochronić serwer przed atakiem botów, trzeba weryfikować wszystkie próby dołączenia na serwer. Filtry (tzw. antyboty) dzielą się na dwie rodziny: wewnętrzne i zewnętrzne. Wewnętrzne filtry (pluginy) skuteczniej wykryją bota, jednak mogą być nieprzyjemne dla niektórych graczy (przykład: blokada vpn, obowiązek przepisania kodu). Dodatkowo, podczas nawet małego ataku serwer zostanie szybko przeciążony, ponieważ całe filtrowanie odbywa się na zasobach tego serwera. Zewnętrzne filtry to zbiory wielu maszyn stojące między graczem a serwerem Velocity. Mogą występować w postaci serwerów proxy lub być zintegrowane z siecią serwera. Wytrzymają wielokrotnie silniejsze ataki niż pluginy, lecz posiadają mniejszy wgląd w połączenie gracza z serwerem i tym samym przepuszczą niektóre mniejsze ataki. Idealnym rozwiązaniem jest użycie obu rodzajów filtrów jednocześnie.  
 
-W poradniku użyję [LimboFilter](https://github.com/Elytrium/LimboFilter) jako filtr wewnętrzny:
-1. Pobierz pluginy [LimboFilter](https://modrinth.com/plugin/limbofilter) oraz [LimboAPI](https://modrinth.com/plugin/limboapi)
-2. Wrzuć pobrane pluginy do folderu 'plugins' w plikach serwera Velocity
-Teraz możesz dopasować pod siebie opcje w configu pluginu, takie jak parametry mapy z kodem, rodzaje filtrowania czy część wizualna.  
-**UWAGA: Poradnik dla zewnętrznych filtrów znajduje się w punkcie 7.**
+W poradniku użyję [Sonar](https://github.com/jonesdevelopment/sonar) jako filtr wewnętrzny:
+1. Pobierz plugin [Sonar](https://modrinth.com/plugin/sonar)
+2. Wrzuć pobrany pluginy do folderu 'plugins' w plikach serwera Velocity
+
+**UWAGA: Poradnik dla zewnętrznych filtrów znajduje się w punkcie 8.**
 
 Inne sprawdzone pluginy: [EpicGuard](https://github.com/4drian3d/EpicGuard)
 
 ------------------------------------------------------------------------------------------------------------
 
 # 8. Zabezpieczenie serwera przed atakami DDoS
-Ataki DDoS to problem każdego serwera, nieważne jak dużego. Na szczęście można go łatwo rozwiązać. Większość hostingów oferuje filtry wyłącznie na warstwach 3 i 4, przez co warstwa 7 (aplikacyjna) jest otwarta na ataki. Istnieje wiele filtrów, lecz lepiej uważnie się im przyjrzeć przed wyborem - niektóre z nich należą do cyberprzestępców. Ta część będzie dotyczyła głównie niskiego budżetu, ponieważ w średnim budżecie można dostać maszynę wraz z filtrami na wszystkich trzech warstwach.
+Ataki DDoS to problem każdego serwera, nieważne jak dużego. Na szczęście można go łatwo rozwiązać. Wiele hostingów nadal oferuje filtry wyłącznie na warstwach 3 i 4, przez co warstwa 7 (aplikacyjna) jest otwarta na ataki. Jeśli twój hosting nie oferuje filtrów na warstwie aplikacyjnej w cenie, ta sekcja jest dla ciebie.
 
-**AKTUALNIE NIC TU NIE MA, ROZBUDOWANY PORADNIK POJAWI SIĘ W PRZYSZŁOŚCI**
+**AKTUALNIE NIC TU NIE MA, ROZBUDOWANY PORADNIK MOŻE POJAWI SIĘ W PRZYSZŁOŚCI.**
+Przykładowe usługi filtrów zewnętrznych:
+- [NeoProtect](https://neoprotect.net/)
+- [TcpShield](https://tcpshield.com/)
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -155,7 +157,7 @@ Ataki DDoS to problem każdego serwera, nieważne jak dużego. Na szczęście mo
 Kiedyś sporym minusem Velocity były małe ilości pluginów, jednak aktualnie coraz częściej można spotkać plugin wspierający Velocity, ale niewspierający BungeeCorda. Pluginy Velocity znajdują się przede wszystkim na [Modrinth](https://modrinth.com/plugins?g=categories:%27velocity%27) oraz [Hangar](https://hangar.papermc.io/?platform=VELOCITY). Większość pluginów dla BungeeCorda ze SpigotMC także posiada wsparcie dla Velocity.
 Kilka polecanych pluginów:
 - [LuckPerms](https://luckperms.net/) - Pozwala zarządzać uprawnieniami i rangami.
-- [FastMOTD](https://modrinth.com/plugin/fastmotd) - Wydajny plugin pozwalający edytować MOTD serwera w sposób bardziej rozbudowany niż opcja w configu Velocity.
+- [FastMOTD](https://modrinth.com/plugin/minimotd) - Plugin pozwalający edytować MOTD serwera w sposób bardziej rozbudowany niż opcja w configu Velocity.
 - [CommandWhitelist](https://modrinth.com/plugin/commandwhitelist) - Umożliwia dodanie komend serwera proxy do whitelisty dla danych rang.
 - [AjQueue](https://modrinth.com/plugin/ajqueue)/[LimboQueue](https://modrinth.com/plugin/limboqueue) - Kolejka dołączania graczy.
 - [LibertyBans](https://modrinth.com/plugin/libertybans) - Rozbudowany system karania graczy.
