@@ -7,9 +7,8 @@ Kiedyś znajdowało się tu wyjaśnienie przewag Velocity nad BungeeCordem, ale
 ------------------------------------------------------------------------------------------------------------
 
 # 1. Instalacja i pierwsze uruchomienie silnika Velocity
-Aby zainstalować Velocity, należy wejść na [stronę Papera](https://papermc.io/downloads#Velocity) i pobrać najnowszy build. Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić go komendą:  
-**java -Xmx1G -Xms1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity.jar**  
-Oczywiście możesz też użyć tą komendę w swoim pliku startowym. Dla samego serwera proxy wystarczy przypisać 0.5gb pamięci RAM, jednak pluginy też trochę potrzebują, dlatego lepiej przypisać 1gb-2gb. Ważne jest też by zostawić wolny ram dla overheadu, autor Velocity zaleca by w systemie zostało tyle samo ramu, ile jest przypisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna powinna mieć przynajmniej 4gb. W zależności od ilości zainstalowanych pluginów może być konieczne zwiększenie przypisanego ramu (flagi Xmx oraz Xms) do 2gb.
+Aby zainstalować Velocity, należy wejść na [stronę Papera](https://papermc.io/downloads#Velocity) i pobrać najnowszy build. Upewnij się, że masz zainstalowaną najnowszą wersję Javy. Teraz możesz wrzucić silnik do wybranego folderu na twoim serwerze i uruchomić serwer. 
+Dla samego serwera proxy wystarczy przypisać 0.5gb pamięci RAM, jednak pluginy też trochę potrzebują, dlatego lepiej przypisać 1gb-2gb. Ważne jest też by zostawić wolny ram dla overheadu, autor Velocity zaleca by w systemie zostało tyle samo ramu, ile jest przypisane do Velocity + 2gb. Oznacza to, że w przypadku przypisanego 1gb, maszyna powinna mieć przynajmniej 4gb. W zależności od ilości zainstalowanych pluginów może być konieczne zwiększenie przypisanego ramu (flagi Xmx oraz Xms) do 2gb.
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -109,8 +108,8 @@ Ten punkt opisze co można zrobić, aby tryb Offline był bezpieczniejszy niż d
 **Autoryzacja**  
 Na początek warto wspomnieć, że istnieją 3 rodzaje autoryzacji - Online (Autoryzacja z serwerami Microsoftu), Offline (Autoryzacja pluginem, wszyscy gracze zakładają hasła do swojego konta na serwerze Minecraft) oraz Hybrydowa (Gracze z zakupioną grą będą autoryzowani z serwerami Microsoftu, a piraci będą autoryzowani pluginem). Istnieje wiele pluginów służących do autoryzacji graczy, jednak trzeba szczególnie uważać by nie trafić na jeden z tych gorszych - luka w takim pluginie może skutecznie zakończyć cały twój serwer. Zalecam unikać tych pluginów, których kod źródłowy nie jest dostępny publicznie.  
 
-W poradniku użyję plugin [LibreLogin](https://github.com/kyngs/LibreLogin):
-1. Pobierz plugin [LibreLogin](https://modrinth.com/plugin/libre-login)
+W poradniku użyję plugin [LibreLogin](https://github.com/Navio1430/LibreLoginProd):
+1. Pobierz plugin [LibreLogin](https://modrinth.com/plugin/libreloginprod)
 2. Pobierz i jednorazowo uruchom serwer [NanoLimbo](https://github.com/BoomEaro/NanoLimbo/releases) w celu wygenerowania pliku konfiguracyjnego
      - jeśli czujesz się na siłach to możesz także wybrać inny silnik serwera limbo, np. [PicoLimbo](https://github.com/Quozul/PicoLimbo). Poradnik skupi się na NanoLimbo ze względu na prostotę konfiguracji
 4. Zmień opcje w configu NanoLimbo:
