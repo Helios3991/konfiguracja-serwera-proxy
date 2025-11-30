@@ -44,7 +44,7 @@ Możesz tutaj ustawić połączenia pomijające serwer lobby zależnie od podane
 ------------------------------------------------------------------------------------------------------------
 
 # 3. Konfiguracja serwerów Minecraft
-Sam serwer Minecraft też posiada parę opcji, które trzeba zmienić. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port (server-port) taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Jeśli serwer Minecraft stoi na tej samej maszynie co serwer proxy, należy także zmienić adres IP (server-ip) na '127.0.0.1'. Pozostałe ustawienia są zależne od wersji:
+Sam serwer Minecraft też posiada parę opcji, które trzeba zmienić. Pierwszym plikiem będzie server.properties, w którym musisz ustawić port (server-port) taki sam jak w configu Velocity oraz wyłączyć tryb online (online-mode=false). Pozostałe ustawienia są zależne od wersji:
 
 Zacznij od ustawienia w pliku server.properties adresu IP oraz portu, które są zgodne z tymi w configu Velocity.
 
