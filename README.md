@@ -33,7 +33,7 @@ Pozwala wybrać tryb przesyłu UUID oraz adresów IP dołączających graczy mi�
 **Zalecane**: "MODERN"
 
 **[servers]**  
-Tutaj możesz dodać swoje serwery Minecraft. Pamiętaj by NIE używać tutaj publicznego adresu ip, a zamiast tego adres lokalny/wewnętrzny. Więcej informacji na ten temat znajdziesz w sekcji [Networking](https://github.com/Helios3991/konfiguracja-serwera-proxy#5-networking). Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w tej sekcji musi być taki sam jak port w pliku server.properties wybranego serwera Minecraft. Znajduje się tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera Lobby).
+Tutaj możesz dodać swoje serwery Minecraft. Pamiętaj by NIE używać tutaj publicznego adresu ip, tylko adres lokalny/wewnętrzny. Więcej informacji na ten temat znajdziesz w sekcji [Networking](https://github.com/Helios3991/konfiguracja-serwera-proxy#5-networking). Port możesz użyć dowolny, pod warunkiem, że nie jest on zajęty przez inny proces i masz do niego dostęp. Port w tej sekcji musi być taki sam jak port w pliku server.properties wybranego serwera Minecraft. Znajduje się tutaj także opcja 'try', w której możesz ustawić serwer, na który gracz będzie przenoszony po dołączeniu przez serwer proxy (najczęściej używana dla serwera Lobby).
 
 **[forced-hosts]**  
 Możesz tutaj ustawić połączenia pomijające serwer lobby zależnie od podanej subdomeny. Wymagane są odpowiednie ustawienia domeny. Jeśli z tego nie korzystasz, usuń całą zawartość tej opcji.  
@@ -49,8 +49,8 @@ Sam serwer Minecraft też posiada parę opcji, które trzeba zmienić. Pierwszym
 Zacznij od ustawienia w pliku server.properties adresu IP oraz portu, które są zgodne z tymi w configu Velocity.
 
 **Dla serwerów wpuszczających wyłącznie graczy z wersji 1.13 i nowszych**  
-1. W velocity.toml ustaw 'player-info-forwarding-mode' na "MODERN"
-2. W config/paper-global.yml w sekcji 'velocity-support' ustaw 'enabled: true' i 'online-mode: true' oraz wpisz klucz serwera proxy (znajdujący się w pliku forwarding.secret) w opcji 'secret'.
+1. W pliku velocity.toml ustaw 'player-info-forwarding-mode' na "MODERN"
+2. W pliku config/paper-global.yml w sekcji 'velocity' ustaw 'enabled: true' i dopasuj 'online-mode' do opcji z configu velocity, a także wpisz klucz serwera proxy (znajdujący się w pliku forwarding.secret) w opcji 'secret'.
 
 **Dla serwerów wpuszczających graczy z wersji starszych niż 1.13**  
 1. W velocity.toml ustaw 'player-info-forwarding-mode' na "BUNGEEGUARD"
@@ -86,7 +86,7 @@ Poprawna konfiguracja ruchu sieciowego między serwerami ma ogromny wpływ na be
 2. Sieć lokalna - Taka sieć jest dużo mniejsza niż sieć globalna i ogranicza się do urządzeń stojących za pojedynczym routerem. Lokalny ruch sieciowy nie wydostaje się do sieci publicznej poprzez router. To właśnie poprzez sieć lokalną przechodzi ruch sieciowy
 podczas gry LAN czy komunikacji z drukarką.
 3. Adres publiczny - To adres twojego routera w sieci publicznej (przykład: 104.28.212.230). Otwierając usługę sieciową na tym adresie będzie ona widoczna w całej sieci globalnej. Placeholder adresowy '0.0.0.0' oznacza wszystkie publiczne adresy IP do których urządzenie posiada dostęp.
-4. Adres loopback (localhost) - Znany już niektórym adres 127.0.0.1, to adres "samego siebie", usługa sieciowa na nim uruchomiona będzie widoczna tylko dla aplikacji otwartych na tej samej (wirtualnej) karcie sieciowej. Zalecany w przypadku serwerów niezarządzanych, takich jak VPS.
+4. Adres loopback (localhost) - Numerycznie 127.0.0.1, to adres "samego siebie", usługa sieciowa na nim uruchomiona będzie widoczna tylko dla aplikacji otwartych na tej samej (wirtualnej) karcie sieciowej. Zalecany w przypadku serwerów niezarządzanych, takich jak VPS.
 5. Adres wewnętrzny - To adres pojedynczego urządzenia w sieci lokalnej. Dla przykładu, router może mieć adres 192.168.0.1, komputer 192.168.0.10, a drukarka 192.168.0.15. Otwierając usługę sieciową na tym adresie będzie ona widoczna wyłącznie w danej sieci lokalnej. Jeśli nie posiadasz własnego VLAN-a, zazwyczaj obejmują całą infrastrukturę hostingu.
 6. Adres niestandardowy - Są to adresy wprowadzone przez zewnętrzne oprogramowanie do specyficznych zastosowań. Przykładowo popularny panel dla serwerów gier Pterodactyl wprowadza adres 172.18.0.1, który pozwala połączyć się jedynie z poziomu jednego Node'a. Niektóre hostingi zarządzane oferują także adresy prywatne, które są ograniczone do pojedynczego pakietu zasobów.
 7. Serwer backendowy - To serwer, do którego dostęp potrzebują jedynie inne serwery. Przykładami takich serwerów są np. bazy danych oraz serwery Minecraft stojące za serwerem proxy.
